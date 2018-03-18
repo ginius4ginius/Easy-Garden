@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pro.ginius.easygarden">
-
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -26,16 +26,14 @@
         </activity>
         <activity android:name=".vue.SunnyActivity" />
         <activity android:name=".vue.TypeActivity" />
-        <activity
-            android:name=".vue.LoginActivity"
-            android:windowSoftInputMode="stateHidden">
+        <activity android:name=".vue.RegisterActivity" />
+        <activity android:name=".vue.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".vue.RegisterActivity"></activity>
     </application>
 
 </manifest>

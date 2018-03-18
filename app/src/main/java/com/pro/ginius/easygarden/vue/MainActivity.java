@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,"menu_par_ensoleillement selectionné",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this,SunnyActivity.class);
                 startActivity(intent);
+                finish();
                 return true;
 
             case R.id.menu_type:
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,"menu_par_type selectionné",Toast.LENGTH_SHORT).show();
                 Intent intent2 = new Intent(MainActivity.this,TypeActivity.class);
                 startActivity(intent2);
+                finish();
                 return true;
 
             case R.id.menu_acceuil:
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,"menu_acceuil selectionné",Toast.LENGTH_SHORT).show();
                 Intent intent3 = new Intent(MainActivity.this,MainActivity.class);
                 startActivity(intent3);
+                finish();
                 return true;
 
             case R.id.menu_contact:

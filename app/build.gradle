@@ -2,7 +2,9 @@ apply plugin: 'com.android.application'
 
 
 android {
+    //useLibrary 'org.apache.http.legacy'
     compileSdkVersion 26
+
     defaultConfig {
         applicationId "com.pro.ginius.easygarden"
         minSdkVersion 16

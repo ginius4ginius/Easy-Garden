@@ -1,6 +1,10 @@
 package com.pro.ginius.easygarden.model;
 
+import org.json.JSONArray;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by fcd on 08/03/2018.
@@ -9,64 +13,70 @@ import java.io.Serializable;
 public class Profil implements Serializable {
 
     //déclaration des variables
-    private String login;
-    private String email;
-    private String motDePasse;
-    private String adresseRue;
-    private Integer adresseCp;
-    private String adresseVille;
+    private String nom;
+    private String prenom;
     private Integer age;
+    private String pseudo;
+    private String password;
+    private String email;
 
     /**
      * constructeur avec paramètres
-     * @param login
+     * @param nom
+     * @param prenom
+     * @param age
+     * @param pseudo
+     * @param password
      * @param email
-     * @param motDePasse
-     * @param adresseRue
-     * @param adresseCp
-     * @param adresseVille
      * @param age
      */
-    public Profil(String login, String email, String motDePasse, String adresseRue, Integer adresseCp, String adresseVille, Integer age){
+    public Profil(String nom, String prenom, Integer age, String pseudo, String password, String email){
 
-        this.login = login;
+        this.nom = nom;
         this.email = email;
-        this.motDePasse = motDePasse;
-        this.adresseRue = adresseRue;
-        this.adresseCp = adresseCp;
-        this.adresseVille = adresseVille;
+        this.prenom = prenom;
+        this.password = password;
+        this.pseudo = pseudo;
         this.age = age;
 
     }
 
     //getters
-    public String getLogin(){
-        return login;
+    public String getNom(){
+        return nom;
     }
 
-    public String getEmail(){
-        return email;
-    }
-
-    public String getMotDePasse(){
-        return motDePasse;
-    }
-
-    public String getAdresseRue(){
-        return adresseRue;
-    }
-
-    public Integer getAdresseCp(){
-        return adresseCp;
-    }
-
-    public String getAdresseVille(){
-        return adresseVille;
+    public String getPrenom(){
+        return prenom;
     }
 
     public Integer getAge(){
         return age;
     }
 
+    public String getPseudo(){
+        return pseudo;
+    }
 
+    public String getPassword(){return password; }
+
+    public String getEmail(){
+        return email;
+    }
+
+    /**
+     * conversion du profil au format JSONArray
+     * @return
+     */
+    public JSONArray convertToJSONArray(){
+        List liste = new ArrayList();
+        liste.add(nom);
+        liste.add(prenom);
+        liste.add(age);
+        liste.add(pseudo);
+        liste.add(password);
+        liste.add(email);
+
+        return new JSONArray(liste);
+    }
 }
