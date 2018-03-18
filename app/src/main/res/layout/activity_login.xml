@@ -52,7 +52,13 @@
             android:text="Connexion"
             tools:layout_editor_absoluteX="141dp"
             tools:layout_editor_absoluteY="187dp"/>
-            /*android:onClick="OnLogin"*/
+
+        <Button
+            android:id="@+id/btnEnregistrement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enregistrement" />
+        /*android:onClick="OnLogin"*/
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

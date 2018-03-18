@@ -24,33 +24,67 @@
             android:text="Nom" />
         <!--  Name TextField -->
         <EditText
-            android:id="@+id/registerName"
+            android:id="@+id/EtRegisterNom"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName" />
 
         <!--  Email Label -->
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prenom" />
+
+        <EditText
+            android:id="@+id/EtRegisterPrenom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Age" />
+
+        <EditText
+            android:id="@+id/EtRegisterAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login" />
+
+        <EditText
+            android:id="@+id/EtRegisterLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Email" />
         <!--  Email TextField -->
         <EditText
-            android:id="@+id/registerEmail"
+            android:id="@+id/EtRegisterMail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress" />
 
         <!--  Password Label -->
+
+        <!--  Password TextField -->
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dip"
             android:text="Mot de passe" />
 
-        <!--  Password TextField -->
         <EditText
-            android:id="@+id/registerPassword"
+            android:id="@+id/EtRegisterPassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />

@@ -9,230 +9,90 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.pro.ginius.easygarden.R;
+import com.pro.ginius.easygarden.controleur.Manager;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class RegisterActivity extends Activity
-{
+public class RegisterActivity extends Activity {
 
-    Button btnRegister;
-    Button btnLinkToLogin;
-    EditText inputFullName;
-    EditText inputEmail;
-    EditText inputPassword;
-
-    /****************/
-  /* Réponse JSON */
-    /****************/
-
-    private static String KEY_SUCCESS = "success";
+    //déclaration des variables
+    Button btnRegister, btnLinkToLogin;
+    EditText nomEt, prenomEt, ageEt, pseudoEt, passwordEt, emailEt;
+    String nom,prenom,pseudo,password,email;
+    Integer age;
+    Manager manager;
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        //défini le nom de l'activité
+        setTitle("Nouveau compte");
+        //initialise les objets graphique
+        init();
 
-        /********************************/
-    /* Définit le nom de l'Activity */
-        /********************************/
+        manager = manager.getInstance(this);
 
-        setTitle("Register new account");
+    }
 
-        /**********************************************************/
-    /* Importation des caractéristiques des champs et boutons */
-        /**********************************************************/
+    /**
+     * fonction d'initialisation des objets graphique
+     */
+    public void init() {
 
-        inputFullName = (EditText) findViewById(R.id.registerName);
-        inputEmail = (EditText) findViewById(R.id.registerEmail);
-        inputPassword = (EditText) findViewById(R.id.registerPassword);
+        nomEt = (EditText) findViewById(R.id.EtRegisterNom);
+        prenomEt = (EditText) findViewById(R.id.EtRegisterPrenom);
+        ageEt = (EditText) findViewById(R.id.EtRegisterAge);
+        pseudoEt = (EditText) findViewById(R.id.EtRegisterLogin);
+        passwordEt = (EditText) findViewById(R.id.EtRegisterPassword);
+        emailEt = (EditText) findViewById(R.id.EtRegisterMail);
+
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
+        ecouteRegister();
+        alreadyLogin();
+    }
 
-        /*******************************/
-    /* Clic sur le bouton Register */
-        /*******************************/
 
-        btnRegister.setOnClickListener(new View.OnClickListener()
-        {
+    /**
+     * gestion du bouton enregistrement
+     */
+    public void ecouteRegister(){
+        ((Button)findViewById(R.id.btnRegister)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view)
             {
-                /***************************************/
-        /* On récupère le contenu des EditText */
-                /***************************************/
+            // Récupération du contenu des EditText
+                nom= nomEt.getText().toString();
+                prenom = prenomEt.getText().toString();
+                age = Integer.parseInt(ageEt.getText().toString());
+                pseudo = pseudoEt.getText().toString();
+                password = passwordEt.getText().toString();
+                email = emailEt.getText().toString();
 
-                String name = inputFullName.getText().toString();
-                String email = inputEmail.getText().toString();
-                String password = inputPassword.getText().toString();
+                Toast.makeText(RegisterActivity.this, "test d'enregistrement", Toast.LENGTH_SHORT).show();
+                manager.creerUtilisatreur(nom,prenom,age,pseudo,password,email);
 
-                JSONObject jObj;
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
 
-                /*************************/
-        /* Teste du mot de passe */
-                /*************************/
-
-                if(isValidPassword(password))
-                {
-                    /***************************/
-          /* Teste de l'adresse mail */
-                    /***************************/
-                    if(isValidEmail(email))
-                    {
-
-                        /******************************************************/
-            /* On construit la liste des paramètres de la requête */
-                        /******************************************************/
-
-                        ArrayList nameValuePairs = new ArrayList();
-                        nameValuePairs.add(new BasicNameValuePair("tag", "register"));
-                        nameValuePairs.add(new BasicNameValuePair("name", name));
-                        nameValuePairs.add(new BasicNameValuePair("email", email));
-                        nameValuePairs.add(new BasicNameValuePair("password", password));
-
-                        try
-                        {
-                            /********************************************/
-              /* Exécute la requête vers le serveur local */
-                            /********************************************/
-
-                            HttpClient httpclient = new DefaultHttpClient();
-                            HttpPost httppost = new HttpPost("http://10.0.2.2/android_login_api/index.php");
-                            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                            HttpResponse response = httpclient.execute(httppost);
-                            HttpEntity entity = response.getEntity();
-                            InputStream is = entity.getContent();
-                            BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
-                            StringBuilder sb = new StringBuilder();
-                            String line = reader.readLine();
-                            sb.append(line + "\n");
-                            is.close();
-
-                            /***************************/
-              /* Résultats de la requête */
-                            /***************************/
-
-                            String result = sb.toString();
-                            jObj = new JSONObject(result);
-
-                            /**********************************************/
-              /* Si le résultat de la requête n'est pas nul */
-                            /**********************************************/
-
-                            if (jObj.getString(KEY_SUCCESS) != null)
-                            {
-                                String res = jObj.getString(KEY_SUCCESS);
-
-                                /*********************************************************/
-                /* Si il vaut 1, l'utilisateur est maintenant enregistré */
-                                /*********************************************************/
-
-                                if(Integer.parseInt(res) == 1)
-                                {
-
-                                    Toast.makeText(getApplicationContext(), "Success Registred", Toast.LENGTH_SHORT).show();
-
-                                    /***************************************/
-                  /* Lancement de l'Activity "DashBoard" */
-                                    /***************************************/
-
-                                    Intent login = new Intent(getApplicationContext(), LoginActivity.class);
-                                    login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(login);
-
-                                    /****************************/
-                  /* Ferme l'Activity "Login" */
-                                    /****************************/
-
-                                    finish();
-                                }
-
-                                /*****************************************/
-                /* Si il vaut 0, erreur d'enregistrement */
-                                /*****************************************/
-
-                                else
-                                {
-                                    Toast.makeText(getApplicationContext(), jObj.get("error_msg").toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                        catch(Exception e)
-                        {
-                        }
-                    }
-                    else
-                        Toast.makeText(getApplicationContext(), "Invalid email !", Toast.LENGTH_SHORT).show();
-                }
-                else
-                    Toast.makeText(getApplicationContext(), "Password too long (<8) !", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
-        /**************************/
-    /* Clic sur le lien Login */
-        /**************************/
-
-        btnLinkToLogin.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View view)
-            {
-                /***********************************/
-        /* Lancement de l'Activity "Login" */
-                /***********************************/
-
-                Intent i = new Intent(getApplicationContext(),  LoginActivity.class);
-                startActivity(i);
-
-                /****************************/
-        /* Ferme l'Activity "Login" */
-                /****************************/
-
+    /**
+     * gestion du bouton enregistré
+     */
+    public void alreadyLogin(){
+        ((Button)findViewById(R.id.btnLinkToLoginScreen)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
+
     }
 
-    /***************************/
-  /* Teste de l'adresse mail */
-    /***************************/
-
-    public final static Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
-            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                    "\\@" +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-                    "(" +
-                    "\\." +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                    ")+"
-    );
-
-    public static boolean isValidEmail(String email)
-    {
-        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
-    }
-
-    /******************************************************/
-  /* Teste si le mot de passe fait plus de 8 caractères */
-    /******************************************************/
-
-    public static boolean isValidPassword(String password)
-    {
-        if(password.length() <= 8)
-        return true;
-    else
-        return false;
-    }
 }

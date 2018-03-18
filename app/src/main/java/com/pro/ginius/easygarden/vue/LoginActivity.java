@@ -1,5 +1,6 @@
 package com.pro.ginius.easygarden.vue;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,11 +19,14 @@ public class LoginActivity extends AppCompatActivity {
     String username,password;
     Manager manager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //défini le nom de l'activité
+        setTitle("Authentification");
+        //initialise les objets graphique
         init();
 
         manager = manager.getInstance(this);
@@ -36,21 +40,40 @@ public class LoginActivity extends AppCompatActivity {
         PasswordEt = (EditText)findViewById(R.id.etPassword);
         //gestion de l'évènement sur le bouton login
         ecouteLogin();
+        saveLogin();
     }
 
     /**
-     * gestin du bouton login
+     * gestion du bouton login
      */
     public void ecouteLogin(){
         ((Button) findViewById(R.id.btnLogin)).setOnClickListener(new Button.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "test", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(LoginActivity.this, "test", Toast.LENGTH_SHORT).show();
                 username = UserNameEt.getText().toString();
                 password = PasswordEt.getText().toString();
                 //
                 manager.controleUtilisateur(username,password);
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+    /**
+     * gestion du bouton enregistrement
+     */
+    public void saveLogin(){
+        ((Button)findViewById(R.id.btnEnregistrement)).setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this,"Enregistrement sélectionné",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
