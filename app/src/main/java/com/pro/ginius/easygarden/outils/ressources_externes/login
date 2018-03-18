@@ -1,0 +1,71 @@
+<?php
+
+include("connexion.php");
+//déclaration des variables
+/*$login = $REQUEST["user_name"];
+$mdp = $REQUEST["password"];*/
+$donn = $_REQUEST["lesdonnees"];
+$donn2 = $_REQUEST["operation"];
+//controle de la réception des paramètres
+
+if(isset($_REQUEST["operation"])){
+
+  //demande de récupération de l'utilisateur
+  if($_REQUEST["operation"]=="login"){
+
+    try {
+      $donnee = json_decode($donn);
+      $login = $donnee[0];
+      $password = $donnee[1];
+
+      print "login%";
+      $cnx = connexionPDO();
+      $req = $cnx->prepare("SELECT * FROM users WHERE pseudo LIKE '$login' AND password = '$password';");
+      $req->execute();
+      // si il y a un résultat, récupération
+      if($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+          print(json_encode($ligne));
+          print "utilisateur trouvé";
+      }else{
+        $test = "testaffichage";
+        print "Erreur!% utisateur non trouvé avec les données:".$login." - ".$password."-----".$REQUEST['operation']."-------";
+      }
+
+    } catch (DOException $e) {
+      print "Erreur!%".$e->getMessage();
+      die();
+    }
+
+  }
+
+  //enregsitrement nouvel utilisateur
+}elseif($_REQUEST["opération"]=="enreg"){
+
+  try {
+    //récupération des données en POST
+    $donnee = json_decode($donn);
+    $nomUser = $donnee[0];
+    $prenomUser = $donnee[1];
+    $ageUser = $donnee[2];
+    $pseudoUser = $donnee[3];
+    $mdpUser = $donnee[3];
+    $mailUser = $donnee[4];
+
+    //insersion dans la base de donnée
+    print "enreg%";
+    $cnx = connexionPDO();
+    $larequete = "INSERT INTO users (nom,prenom,age,pseudo,password,email)";
+    $larequete.= " VALUES($nomUser,$prenomUser,$ageUser,$pseudoUser,$mdpUser,$mailUser)";
+    print "$larequete";
+    $req = $cnx->prepare($larequete);
+    $req->execute();
+
+
+  } catch (PDOException $e) {
+    print "Erreur!%".$e->getMessage();
+    die();
+  }
+}
+
+
+ ?>

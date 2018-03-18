@@ -1,0 +1,29 @@
+<?php
+
+function connexionPDO(){
+  //déclaration des variables
+  $database ="easygarden_bd";
+  $server = "localhost";
+  $login = "giniusAdmin";
+  $password = "DERIEUV93";
+
+  //fonction de connexion
+    try {
+        $conn = new PDO("mysql:host=$server;dbname=$database", $login, $password);
+        return $conn;
+        print "Connexion à la base ".$database." reussie.";
+
+
+    } catch (PDOException $e) {
+        print "Erreur de connexion.";
+      die();
+
+    }
+/*
+    if($conn){
+      echo "Connexion à la base ".$database." reussie.";
+    }else{
+      echo "Erreur de connexion.";
+    }
+    */
+}
