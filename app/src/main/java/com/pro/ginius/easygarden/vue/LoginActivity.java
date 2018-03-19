@@ -56,9 +56,9 @@ public class LoginActivity extends AppCompatActivity {
                 password = PasswordEt.getText().toString();
                 //
                 manager.controleUtilisateur(username,password);
-                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent);
-                finish();
+               // Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                //startActivity(intent);
+                //finish();
             }
         });
     }

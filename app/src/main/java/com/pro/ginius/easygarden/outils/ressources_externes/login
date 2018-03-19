@@ -1,13 +1,11 @@
 <?php
 
 include("connexion.php");
-//déclaration des variables
-/*$login = $REQUEST["user_name"];
-$mdp = $REQUEST["password"];*/
-$donn = $_REQUEST["lesdonnees"];
-$donn2 = $_REQUEST["operation"];
-//controle de la réception des paramètres
 
+//déclaration des variables
+$donn = $_REQUEST["lesdonnees"];
+
+//controle de la réception des paramètres
 if(isset($_REQUEST["operation"])){
 
   //demande de récupération de l'utilisateur
@@ -36,36 +34,37 @@ if(isset($_REQUEST["operation"])){
       die();
     }
 
+    //enregsitrement nouvel utilisateur
+  }elseif($_REQUEST["operation"]=="enreg"){
+
+    try {
+      //récupération des données en POST
+      $donnee = json_decode($donn);
+      $nomUser = $donnee[0];
+      $prenomUser = $donnee[1];
+      $ageUser = $donnee[2];
+      $pseudoUser = $donnee[3];
+      $mdpUser = $donnee[4];
+      $mailUser = $donnee[5];
+
+      //insersion dans la base de donnée
+      print "enreg%";
+      $cnx = connexionPDO();
+      $larequete = "INSERT INTO users (nom,prenom,age,pseudo,password,email)";
+      $larequete.= " VALUES(\"$nomUser\",\"$prenomUser\",$ageUser,\"$pseudoUser\",\"$mdpUser\",\"$mailUser\")";
+      $req = $cnx->prepare($larequete);
+      $req->execute();
+
+
+    } catch (PDOException $e) {
+      print "Erreur!%".$e->getMessage();
+      die();
+    }
   }
 
-  //enregsitrement nouvel utilisateur
-}elseif($_REQUEST["opération"]=="enreg"){
-
-  try {
-    //récupération des données en POST
-    $donnee = json_decode($donn);
-    $nomUser = $donnee[0];
-    $prenomUser = $donnee[1];
-    $ageUser = $donnee[2];
-    $pseudoUser = $donnee[3];
-    $mdpUser = $donnee[3];
-    $mailUser = $donnee[4];
-
-    //insersion dans la base de donnée
-    print "enreg%";
-    $cnx = connexionPDO();
-    $larequete = "INSERT INTO users (nom,prenom,age,pseudo,password,email)";
-    $larequete.= " VALUES($nomUser,$prenomUser,$ageUser,$pseudoUser,$mdpUser,$mailUser)";
-    print "$larequete";
-    $req = $cnx->prepare($larequete);
-    $req->execute();
-
-
-  } catch (PDOException $e) {
-    print "Erreur!%".$e->getMessage();
-    die();
   }
-}
+
+
 
 
  ?>
