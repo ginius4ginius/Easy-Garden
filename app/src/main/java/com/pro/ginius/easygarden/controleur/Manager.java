@@ -1,9 +1,13 @@
 package com.pro.ginius.easygarden.controleur;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 
 import com.pro.ginius.easygarden.model.AccesDistant;
 import com.pro.ginius.easygarden.model.Profil;
+import com.pro.ginius.easygarden.vue.LoginActivity;
+import com.pro.ginius.easygarden.vue.MainActivity;
 
 import org.json.JSONArray;
 
@@ -17,7 +21,7 @@ import java.util.List;
 public class Manager {
 
     private static Manager instance = null;
-    private static Profil profil = null;
+    private Profil utilisateur = null;
     private static AccesDistant accesDistant;
     private static Context c;
     private JSONArray parameters;
@@ -68,6 +72,18 @@ public class Manager {
          parameters = new JSONArray(liste);
        accesDistant.envoi("login", parameters);
 
+    }
+
+    /**
+     * inserer les données récup de la bd dans le profil du manager
+     * @param profil
+     */
+    public void setProfil(Profil profil){
+        utilisateur = profil;
+    }
+
+    public Profil getProfil(){
+        return utilisateur;
     }
 }
 

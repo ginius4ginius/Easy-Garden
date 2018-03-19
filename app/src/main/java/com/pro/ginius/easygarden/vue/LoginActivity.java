@@ -3,6 +3,7 @@ package com.pro.ginius.easygarden.vue;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,11 +12,13 @@ import android.widget.Toast;
 import com.pro.ginius.easygarden.R;
 import com.pro.ginius.easygarden.controleur.Manager;
 import com.pro.ginius.easygarden.controleur.ManagerLogin;
+import com.pro.ginius.easygarden.model.Profil;
 
 public class LoginActivity extends AppCompatActivity {
 
     //déclaration des variables
     EditText UserNameEt,PasswordEt;
+    Profil profil;
     String username,password;
     Manager manager;
 
@@ -29,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         //initialise les objets graphique
         init();
 
-        manager = manager.getInstance(this);
+        manager = Manager.getInstance(this);
     }
 
     /**
@@ -41,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         //gestion de l'évènement sur le bouton login
         ecouteLogin();
         saveLogin();
+
+
     }
 
     /**
@@ -56,12 +61,20 @@ public class LoginActivity extends AppCompatActivity {
                 password = PasswordEt.getText().toString();
                 //
                 manager.controleUtilisateur(username,password);
-               // Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                //startActivity(intent);
-                //finish();
+
+                //vérification si Profil récupéré et envois au main si true
+                if(manager.getProfil() != null){
+                    Log.d("profil ","initialisé");
+                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Log.d("profil "," non initialisé");
+                }
             }
         });
     }
+
 
     /**
      * gestion du bouton enregistrement
@@ -70,13 +83,16 @@ public class LoginActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.btnEnregistrement)).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this,"Enregistrement sélectionné",Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
+                Toast.makeText(LoginActivity.this,"Enregistrement terminé",Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
     }
+
+
 
 
 }

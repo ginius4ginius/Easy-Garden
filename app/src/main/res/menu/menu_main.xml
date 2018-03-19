@@ -18,8 +18,14 @@
         android:title="@string/menu_type"
         app:showAsAction="never" />
     <item
+        android:id="@+id/menu_deconnect"
+        android:icon="@drawable/disconnect"
+        android:title="@string/menuDeconnect"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/menu_contact"
         android:icon="@android:drawable/ic_dialog_email"
         android:title="@string/menucontact"
         app:showAsAction="always" />
+
 </menu>

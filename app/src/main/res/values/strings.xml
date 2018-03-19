@@ -20,4 +20,5 @@
         completions."
     </string>
     <string name="enregistrement">Enregistrement</string>
+    <string name="menuDeconnect">menuDeconnect</string>
 </resources>

@@ -2,10 +2,13 @@ package com.pro.ginius.easygarden.model;
 
 import android.util.Log;
 
+import com.pro.ginius.easygarden.controleur.Manager;
 import com.pro.ginius.easygarden.outils.AccesHTTP;
 import com.pro.ginius.easygarden.outils.AsyncResponse;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by fcd on 08/03/2018.
@@ -13,6 +16,8 @@ import org.json.JSONArray;
 
 public class AccesDistant implements AsyncResponse{
 
+    //variables
+    Manager controle;
     //constante
     public static final String SERVEURADDR = "http://192.168.0.14/easyGarden/login.php";
 
@@ -20,7 +25,7 @@ public class AccesDistant implements AsyncResponse{
      * constructeur
      */
     public AccesDistant(){
-        super();
+        controle = Manager.getInstance(null);
     }
 
     /**
@@ -42,6 +47,20 @@ public class AccesDistant implements AsyncResponse{
             }else{
                 if(message[0].equals("login")) {
                     Log.d("login","**************"+message[1]);
+                    try {
+                        JSONObject identifiant = new JSONObject(message[1]);
+                        String nom = identifiant.getString("nom");
+                        String prenom = identifiant.getString("prenom");
+                        Integer age = identifiant.getInt("age");
+                        String pseudo = identifiant.getString("pseudo");
+                        String password = identifiant.getString("password");
+                        String email = identifiant.getString("email");
+                        Profil profil = new Profil(nom,prenom,age,pseudo,password,email);
+                        controle.setProfil(profil);
+                    } catch (JSONException e) {
+                        Log.d("erreur","Recup profil conversion JSON impossible"+e.toString());
+                        e.printStackTrace();
+                    }
                 }else{
                     if(message[0].equals("erreur!")){
                         Log.d("erreur!","**************"+message[1]);

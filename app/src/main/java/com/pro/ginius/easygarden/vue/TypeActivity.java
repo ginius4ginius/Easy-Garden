@@ -9,13 +9,18 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.pro.ginius.easygarden.R;
+import com.pro.ginius.easygarden.controleur.Manager;
 
 public class TypeActivity extends AppCompatActivity {
+
+    //déclaration des variables
+    Manager controle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
+        controle = Manager.getInstance(this);
     }
 
     @Override
@@ -53,6 +58,14 @@ public class TypeActivity extends AppCompatActivity {
                 Toast.makeText(this,"menu_acceuil selectionné",Toast.LENGTH_SHORT).show();
                 Intent intent3 = new Intent(TypeActivity.this,MainActivity.class);
                 startActivity(intent3);
+                finish();
+                return true;
+
+            case R.id.menu_deconnect:
+                controle.setProfil(null);
+                Toast.makeText(this,"menu_deconnect selectionné",Toast.LENGTH_SHORT).show();
+                Intent intent4 = new Intent(TypeActivity.this,LoginActivity.class);
+                startActivity(intent4);
                 finish();
                 return true;
 
