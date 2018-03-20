@@ -11,8 +11,6 @@ import android.widget.Toast;
 import com.pro.ginius.easygarden.R;
 import com.pro.ginius.easygarden.controleur.Manager;
 
-import java.util.regex.Pattern;
-
 public class RegisterActivity extends Activity {
 
     //déclaration des variables
@@ -72,9 +70,9 @@ public class RegisterActivity extends Activity {
                 Toast.makeText(RegisterActivity.this, "test d'enregistrement", Toast.LENGTH_SHORT).show();
                 manager.creerUtilisatreur(nom,prenom,age,pseudo,password,email);
 
-               // Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-               // startActivity(intent);
-               // finish();
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
 
             }
         });

@@ -19,7 +19,8 @@ public class AccesDistant implements AsyncResponse{
     //variables
     Manager controle;
     //constante
-    public static final String SERVEURADDR = "http://192.168.0.14/easyGarden/login.php";
+    //public static final String SERVEURADDR = "http://192.168.0.14/easyGarden/login.php";
+    public static final String SERVEURADDR = "http://172.16.1.134/easyGarden/login.php";//ecole
 
     /**
      * constructeur
