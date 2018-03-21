@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 18 Mars 2018 à 20:02
+-- Généré le :  Mer 21 Mars 2018 à 05:07
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -19,6 +19,144 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `easygarden_bd`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `exposition`
+--
+
+CREATE TABLE `exposition` (
+  `id` int(11) NOT NULL,
+  `libelle` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `exposition`
+--
+
+INSERT INTO `exposition` (`id`, `libelle`) VALUES
+(1, 'ombre'),
+(2, 'mi ombre'),
+(3, 'soleil');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `imageplante`
+--
+
+CREATE TABLE `imageplante` (
+  `id` int(11) NOT NULL,
+  `lien` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `imageplante`
+--
+
+INSERT INTO `imageplante` (`id`, `lien`) VALUES
+(1, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/e/r/erigeron-karvinskianus-7259-1_1.jpg'),
+(2, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/g/i/giroflee-arbustive-7271-2.jpg'),
+(3, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/G/a/Gaura-lindheimeri-Blanche-79028-1.jpg'),
+(4, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/g/e/geranium-orion-7289-1.jpg'),
+(5, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/e/c/echinacea-purpurea-7753-5.jpg'),
+(6, 'https://www.leclosdarmoise.com/1715-large_default/acanthus-spinosus-acanthe.jpg'),
+(7, 'https://www.leclosdarmoise.com/5121-large_default/acorus-gramineus-ogon-.jpg'),
+(8, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/A/j/Ajuga-reptans-Alba-81188-1.jpg'),
+(9, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/A/r/Aruncus-sinensis-Zweiweltenkind-80168-1.jpg'),
+(10, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/A/s/Astilbe-arendsii-Bumalda-80345-1.jpg'),
+(11, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/A/s/Asplenium-scolopendrium-Undulatum-Group-8674-4.jpg'),
+(12, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/A/c/Actaea-pachypoda-Misty-8544-1.jpg'),
+(13, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/C/i/Cimicifuga-atropurpurea-7236-1.jpg'),
+(14, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/E/p/Epimedium-youngianum-Niveum-8224-2.jpg'),
+(15, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/e/p/epimedium-perralchicum-frohnleiten-7671-1.jpg'),
+(16, 'https://www.coclicoh.com/2090-large_default/lobelia-laguna-trailing-dark-blue.jpg'),
+(17, 'https://www.coclicoh.com/2655-large_default/calibrachoa-cancan-rosies-apricote.jpg'),
+(18, 'https://www.coclicoh.com/2197-large_default/verveine-retombante-empress-flair-red.jpg'),
+(19, 'https://www.coclicoh.com/3294-large_default/pelargonium-pac-peltatum-dubbel-mexica-ruby.jpg'),
+(20, 'https://www.coclicoh.com/1948-large_default/bracteantha-immortelle-totally-yellow.jpg'),
+(21, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Alternanthera%20\'Little%20Ruby\'-550x550.jpg'),
+(33, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/jewel-mixture-550x550.jpg'),
+(32, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/F/u/Fuchsia-Omar-Giant-491570-1.jpg'),
+(31, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/B/e/Begonia-retombant-Illumination-tons-abricot-82048-1.jpg'),
+(30, 'https://www.coclicoh.com/3416-large_default/dahlia-dahlietta-select-emily.jpg'),
+(29, 'https://www.coclicoh.com/2107-large_default/nemesia-retombant-sunsatia-plus-lychee.jpg'),
+(34, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/carambolier-550x550.jpg'),
+(35, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Cosmos_bipp_\'Sensation-mixture\'-550x550.jpg'),
+(36, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Dyssodia_golden-dawn-550x550.jpg'),
+(37, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Celosia_fresh-look-red-550x550.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `plante`
+--
+
+CREATE TABLE `plante` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `nom_scientifique` varchar(50) NOT NULL,
+  `descriptif` text NOT NULL,
+  `exposition` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `image` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `plante`
+--
+
+INSERT INTO `plante` (`id`, `nom`, `nom_scientifique`, `descriptif`, `exposition`, `type`, `image`) VALUES
+(1, 'Vergerette', 'Erigeron karvinskianus', 'Joliment surnommé paquerette des murailles, Erigeron karvinskianus, est une vivace couvre sol, très florifère, pour sols calcaires et déssechants.', 3, 1, 1),
+(2, 'Giroflée arbustive', 'Erysimum Bowles Mauve', 'Cette giroflée arbustive forme une belle touffe buissonnante de 80 cm à 1m en tous sens. Ses feuilles gris-bleuté sont groupées au bout des tiges qui portent en partie terminale des épis de fleurs mauves et odorantes qui se renouvellent pendant des mois. Très à l aise dans les sols pauvres, voire pierreux et secs, elle demande le plein soleil pour s épanouir', 3, 1, 2),
+(3, 'Gaura lindheimeri Blanche', 'Gaura de Lindheimer', 'Une plante fine et légère dans vos massifs ! Le gaura lindheimeri produit de nombreux rameaux simples peu ramifiés avec une abondance de petites fleurs blanches, de mai jusqu\'au début de l\'automne. \r\nDe loin, ces petites fleurs blanches à calice rougeâtre donnent un ton rosé et un effet légèrement jardin sauvage. Sa culture se fait en sol normal et léger où il se ressème facilement.', 3, 1, 3),
+(4, 'Bec de Grue', 'Géranium vivace Orion', 'un couvre-sol aux grandes fleurs bleu violacé.', 3, 1, 4),
+(5, 'Rudbeckia pourpre', 'Echinacea purpurea', 'Vivace ornementale aux grosses fleurs solitaires rose pourpré au cœur brun cuivré', 3, 1, 5),
+(6, 'Acanthe', 'Acanthus spinosus', 'Un grand classique aussi beau en feuille qu en fleur. Floraison en épis de juillet à septembre. Feuille vert sombre brillant. Hauteur : 100 à 130 cm, feuillage : 50 cm.\n\nCulture en terre ordinaire mi ombre ou soleil. Rustique à -15°C.', 2, 1, 6),
+(7, 'Acorus gramineus Ogon', 'Acorus gramineus Ogon', 'Un feuillage d or et de lumière qui reste beau toute l année, en été comme en hiver.\n\nExtra en pot ou en bordure. Hauteur 25 cm. Distance de plantation : 60 cm\n\nUne culture facile à mi-ombre, un bel effet en pot avec Viola Rebbeca  pour un duo romantique. Rustique et costaud. Que demander de plus !', 2, 1, 7),
+(8, 'Bugle rampant', 'Ajuga reptans Alba', 'Ce bugle est un couvre-sol vivace semi-persistant très lumineux àl\'ombre. Il forme un tapis de feuilles arrondies, vert foncé prenat des reflets bronze au fil du temps. Ses épis dressés de fleurs blanches apparaissent au printemps, étonamment claires sur un bouillonnement de jolies feuilles qui habillent le jardin hiver comme été. Vigoureuse et florifère, cette variété convient bien aux zones naturelles et ombragées. A cultiver en sol frais, à l\'abri du soleil brûlant.', 2, 1, 8),
+(9, 'Barbe de Bouc', 'Aruncus sinensis Zweiweltenkind', 'Cette Barbe de Bouc est un des cultivars les plus compacts et les plus robustes que comptent ces vivaces de sous bois. Floraison estivale, très abondante, en panaches blanc crème. Pour les abords des pièces d\'eau, les zones humides du jardin. Résiste au vent. Son nom signifie "enfant des deux mondes"; tout un programme.', 2, 1, 9),
+(10, 'Astilbe Bumalda', 'Astilbe arendsii Bumalda', 'Floraison estivale en longs panaches blancs ombrés de rose à l\'ouverture. Idéale aux abords des pièces d\'eau, dans les zones humides du jardin ou dans une grande potée maintenue fraîche.', 2, 1, 10),
+(11, 'Fougère scolopendre', 'Asplenium scolopendrium Undulatum Group', 'Cette fougère d\'une grande valeur ornementale est une forme particulièrement compacte, à frondes entières et à bords ondulés de l\'espèce connue sous le nom de scolopendre. Cette vivace très rustique forme une touffe persistante au port légèrement arqué, composée de grandes feuilles brillantes, vert clair, très lumineuses à l\'ombre. Elle apprécie la fraîcheur animée des sous-bois, la proximité salutaire des points d\'eau, mais aussi la compagnie silencieuse des vieilles pierres avec lesquelles elle forme un mariage parfait.', 1, 1, 11),
+(12, 'Actée à gros pédicelles', 'Actaea pachypoda Misty Blue', 'Vivace rustique des sous-bois, très étonnante pour ses grappes de fruits blancs aux pédicelles rouges et son feuillage bleuté.', 1, 1, 12),
+(13, 'Cierge d\'argent', 'Cimicifuga, Actaea simplex Atropurpurea', 'La plus haute de toutes les actées. Cette superbe plante vivace en touffe développe un ample feuillage caduc et joliment découpé de couleur pourpre, sur lequel se dressent, de septembre à octobre, de beaux épis arqués de 60 cm garnis de petites fleurs en étoiles blanc pur, parfumées. Elle s\'installe lentement, en sol plutôt frais, apportant légèreté, couleur et verticalité aux massifs mi-ombragés.', 1, 1, 13),
+(14, 'Fleur des elfes', 'Epimedium youngianum Niveum', 'Cet Epimedium est une variété compacte au port très soigné, au joli feuillage juvénile coloré de bronze et de pourpre, offrant des grappes de petites fleurs blanc pur évoquant de minuscules ancolies, au printemps. Cette vivace non rhizomateuse s\'étend peu, mais forme de jolis coussins aux couleurs changeantes, à l\'ombre ou à mi-ombre.', 1, 1, 14),
+(15, 'Fleur des Elfes jaune vif', 'Epimedium perralchicum Frohnleiten', '\'Epimedium perralchicum Fröhnleiten, de nombreuses fleurs jaune vif.', 1, 1, 15),
+(16, 'Lobelia Laguna Trailing Dark Blu', 'Lobelia Laguna Trailing Dark Blu', 'Lobelia de qualité, production horticole Française : votre Lobelia est déjà mature lorsque nous vous l\'envoyons.Nos plantes sont bien protégées lors du transport. Lobelia en culture dans nos serres à partir de début mars. Plante contenu dans un pot rond de 10,5cm, idéal pour une livraison sécurisée, une fois à maturité votre plante aura une hauteur d\'environ 0 à 1 m', 3, 2, 16),
+(17, 'Calibrachoa Cancan Rosies Apricote', 'Calibrachoa Apricote', 'Calibrachoa de qualité, production horticole Française : votre Calibrachoa est déjà mature lorsque nous vous l\'envoyons, avec de jolies fleurs ou boutons.Nos plantes sont bien protégées lors du transport. Calibrachoa au coloris orange pour égayer votre jardin. Plante Annuelle qui fleurit de De mai à octobre et qui pousse à une hauteur de 15cm à 50cm, Plante livrée dans un Pot diamètre 10.5cm', 3, 2, 17),
+(18, 'Verveine Retombante Flair Red', 'Verveine Retombante Empress Flair Red', 'Verveine de qualité, production horticole Française:pas besoin d\'attendre, votre Verveine est déjà mature lorsque nous vous l\'envoyons, avec de jolies fleurs ou boutons. Très robustes nos plantes sont protégées par des coques solides lors du transport. Verveine Retombante en culture dans nos serres à partir de mi mars. Plante contenu dans un pot rond de 12cm, idéal pour une livraison sécurisée', 3, 2, 18),
+(19, 'Geranium Lierre  Ruby', 'Geranium Lierre Fleur Double Peltatum Ruby', 'Pelargonium de qualité, production horticole Française:pas besoin d\'attendre, votre Pelargonium est déjà mature lorsque nous vous l\'envoyons, avec de jolies fleurs ou boutons. Très robustes nos plantes sont bien protégées lors du transport. Le Pelargonium Pac Peltatum Dubbel Mexica Ruby est une Plante retombante Annuelle de couleur rouge - blanc - bonne croissance Floraison Moyennement htive', 3, 2, 19),
+(21, 'Alternanthère Little Ruby', 'Alternanthère Little Ruby', 'Cette plante au feuillage pourpre met en valeur tout ce qui l\'entoure. Peut être utilisée en pleine terre ou en contenant. Cette plante versatile est facile à réussir. Aime le soleil et la mi-ombre.', 3, 2, 21),
+(22, 'Fuchsia retombant Sir Matt Busby', 'Fuchsia retombant Sir Matt Busby', 'Fuchsia retombant géant. Fleurs doubles spectaculaires de 7cm, couleur rouge et blanc.', 2, 2, 25),
+(23, 'Capucine Jewel Mixture', 'Tropæolum majus Jewel Mixture', 'Plante annuelle aux fleurs doubles et semi-doubles de couleurs variées (rose, rouge, orange, jaune...). Ses boutons floraux et ses fleurs sont comestibles. Elle est utilisée en compagnonnage dans le potager. C\'est une plante au port retombant, elle est donc idéale pour les bordures, les massifs, les balconnières et jardinières. La capucine se développe bien au soleil ou à la mi-ombre.', 3, 2, 26),
+(20, 'Bégonia retombant Abricots', 'Bégonia retombant Illumination Tons Abricots', 'Ce Bégonia de dernière génération pousse vite et fleurit longtemps. Le port semi-retombant est idéal pour les jardinières et les suspensions. Une cascade de feuillage vert et de fleurs innombrables aux nuances chaudes de jaune-orangé-abricoté. Peu exigeant, bravant la chaleur et les climats frais, il fleurit sans relâche de l\'été à l\'automne, presque sans entretien, au soleil comme à l\'ombre.', 2, 2, 24),
+(24, 'Nemesia Retombant Lychee', 'Nemesia Retombant Sunsatia Plus Lychee', 'Plante à laturité d\'une hauteur de 40 à 60cm', 2, 2, 22),
+(26, 'Dahlia Emily', 'Dahlia Dahlietta Select Emily', ' Le Dahlia Dahlietta Select Emily est une Plante droite Annuelle de couleur Rose - croissance moyenne Floraison Htive', 2, 2, 23),
+(25, 'Immortelle à bractées', 'Immortelle à bractées', 'Les fleurs de l\'immortelle à bractées ‘Totally Yellow’ sont d\'un jaune intensif et lumineux. Ce n\'est pas sans raison que cette variété fut, dès 2010, primée dans le Hesse et le Bade-Wurtemberg comme plante de balcon de l\'année sous le nom de ‘My Sunnyboy’. Avec une texture de végétation harmonieuse et sa floraison abondante elle est un trésor pour tous les jardiniers et elle ornemente balcons et terrasses de ses fleurs d\'un diamètre allant jusqu\'à 6 cm.', 2, 2, 20),
+(27, 'Carambolier', 'Averrhoa carambola', 'Plante fruitière et tropicale appréciée pour ses petites grappes de fleurs roses au centre pourpre. Les fleurs sont parfumées et deviennent des caramboles (fruit jaune étoilé) lorsque la plante est âgée d\'au moins 5 ans. À placer à l\'extérieur l\'été (tolère une température supérieure à 10 degrés Celsius) et entrer dans la maison l\'hiver. Aime un sol drainé et légèrement acide. Besoin de soleil ou de la mi-ombre.', 3, 2, 27),
+(28, 'Cosmos  Sensation mixture', 'Cosmos bipinnatus Sensation mixture', 'Ce mélange de cosmos produit des fleurs roses, fuchsias et blanches perchées sur de hautes tiges (1 m). Facile d\'entretien, cette plante préfère les sols secs et bien drainés. Il est préférable de la planter en plein soleil. Cette annuelle est considérée comme une plante haute, idéale en plein sol pour faire un massif ou un écran et donner un style champêtre au jardin.', 3, 2, 28),
+(29, 'Dyssodia Golden Dawn', 'Dyssodia tenuiloba Golden Dawn', 'Plante annuelle basse et florifère. Ses fleurs jaunes sont semblables à de petites marguerites. Son feuillage est léger et ressemble à celui de la fougère. Plante utilisée pour les bordures, plates-bandes, rocailles, murets, en pot et en panier suspendu. Nécessite du soleil pour fleurir.', 3, 2, 29),
+(30, 'Célosie plumeuse Fresh look red', 'Celosia plumosa Fresh look red', 'Cette célosie produit des fleurs de couleur rouge vif qui sont semblables à un plumeau. C\'est une annuelle très vigoureuse et florifère. Elle endure la chaleur et la sécheresse aussi bien que l\'humidité et la pluie.  Il est préférable de la planter en plein soleil. Cette annuelle est considérée comme une plante de hauteur moyenne, idéale pour les plates-bandes et les bacs.', 3, 2, 30);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `type`
+--
+
+CREATE TABLE `type` (
+  `id` int(11) NOT NULL,
+  `libelle` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `type`
+--
+
+INSERT INTO `type` (`id`, `libelle`) VALUES
+(1, 'vivace'),
+(2, 'annuelle');
 
 -- --------------------------------------------------------
 
@@ -41,11 +179,39 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nom`, `prenom`, `age`, `pseudo`, `password`, `email`) VALUES
-(1, 'derieu', 'vincent', 33, 'ginius', 'DERIEUV93', 'ginius4@hotmail.com');
+(1, 'derieu', 'vincent', 33, 'ginius', 'DERIEUV93', 'ginius4@hotmail.com'),
+(8, 'derieu', 'lise', 34, 'bouh', '1234', 'bouh20@hotmail.com');
 
 --
 -- Index pour les tables exportées
 --
+
+--
+-- Index pour la table `exposition`
+--
+ALTER TABLE `exposition`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `imageplante`
+--
+ALTER TABLE `imageplante`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `plante`
+--
+ALTER TABLE `plante`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_ensoleillement` (`exposition`),
+  ADD KEY `fk_type` (`type`),
+  ADD KEY `fk_image` (`image`);
+
+--
+-- Index pour la table `type`
+--
+ALTER TABLE `type`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `users`
@@ -58,10 +224,30 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT pour la table `exposition`
+--
+ALTER TABLE `exposition`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `imageplante`
+--
+ALTER TABLE `imageplante`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+--
+-- AUTO_INCREMENT pour la table `plante`
+--
+ALTER TABLE `plante`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+--
+-- AUTO_INCREMENT pour la table `type`
+--
+ALTER TABLE `type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

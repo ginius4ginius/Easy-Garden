@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.pro.ginius.easygarden.R;
 import com.pro.ginius.easygarden.controleur.Manager;
-import com.pro.ginius.easygarden.controleur.ManagerLogin;
 import com.pro.ginius.easygarden.model.Profil;
 
 public class LoginActivity extends AppCompatActivity {
