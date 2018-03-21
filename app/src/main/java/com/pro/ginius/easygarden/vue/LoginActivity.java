@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     public void init(){
         UserNameEt = (EditText)findViewById(R.id.etUserName);
         PasswordEt = (EditText)findViewById(R.id.etPassword);
-        //gestion de l'évènement sur le bouton login
+        //gestion de l'évènement sur le bouton serveur
         ecouteLogin();
         saveLogin();
 
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     * gestion du bouton login
+     * gestion du bouton serveur
      */
     public void ecouteLogin(){
         ((Button) findViewById(R.id.btnLogin)).setOnClickListener(new Button.OnClickListener(){

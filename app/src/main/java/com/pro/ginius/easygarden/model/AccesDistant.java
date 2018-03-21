@@ -40,7 +40,7 @@ public class AccesDistant implements AsyncResponse{
         Log.d("serveur", "****************" + output);
         //découpage du message reçu avec %
         String[] message = output.split("%");
-        //dans message[0] = "enreg","login","erreur !"
+        //dans message[0] = "enreg","serveur","erreur !"
         //dans message[1] = reste du message
 
         //si il y a 2 cases
@@ -48,8 +48,8 @@ public class AccesDistant implements AsyncResponse{
             if (message[0].equals("enreg")) {
                 Log.d("enreg", "**************" + message[1]);
             } else {
-                if (message[0].equals("login")) {
-                    Log.d("login", "**************" + message[1]);
+                if (message[0].equals("serveur")) {
+                    Log.d("serveur", "**************" + message[1]);
                     try {
                         JSONObject identifiant = new JSONObject(message[1]);
                         String nom = identifiant.getString("nom");

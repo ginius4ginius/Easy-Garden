@@ -1,0 +1,176 @@
+<?php
+
+include("connexion.php");
+
+//déclaration des variables
+$donn = $_REQUEST["lesdonnees"];
+
+//controle de la réception des paramètres
+if(isset($_REQUEST["operation"])){
+
+  //demande de récupération de l'utilisateur
+  if($_REQUEST["operation"]=="login"){
+
+    try {
+      $donnee = json_decode($donn);
+      $login = $donnee[0];
+      $password = $donnee[1];
+
+      print "login%";
+      $cnx = connexionPDO();
+      $req = $cnx->prepare("SELECT * FROM users WHERE pseudo LIKE '$login' AND password = '$password';");
+      $req->execute();
+      // si il y a un résultat, récupération
+      if($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+          print(json_encode($ligne));
+          print "utilisateur trouvé";
+      }else{
+        $test = "testaffichage";
+        print "Erreur!% utisateur non trouvé avec les données:".$login." - ".$password."-----".$REQUEST['operation']."-------";
+      }
+
+    } catch (DOException $e) {
+      print "Erreur!%".$e->getMessage();
+      die();
+    }
+
+    //enregsitrement nouvel utilisateur
+  }elseif($_REQUEST["operation"]=="enreg"){
+
+    try {
+      //récupération des données en POST
+      $donnee = json_decode($donn);
+      $nomUser = $donnee[0];
+      $prenomUser = $donnee[1];
+      $ageUser = $donnee[2];
+      $pseudoUser = $donnee[3];
+      $mdpUser = $donnee[4];
+      $mailUser = $donnee[5];
+
+      //insersion dans la base de donnée
+      print "enreg%";
+      $cnx = connexionPDO();
+      $larequete = "INSERT INTO users (nom,prenom,age,pseudo,password,email)";
+      $larequete.= " VALUES(\"$nomUser\",\"$prenomUser\",$ageUser,\"$pseudoUser\",\"$mdpUser\",\"$mailUser\")";
+      $req = $cnx->prepare($larequete);
+      $req->execute();
+
+
+    } catch (PDOException $e) {
+      print "Erreur!%".$e->getMessage();
+      die();
+    }
+  }
+  elseif($_REQUEST["operation"]=="showPlanteVivace"){
+
+try{
+    print "showPlanteVivace%";
+    $cnx = connexionPDO();
+    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(type.libelle) LIKE 'vivace' ORDER BY nom;");
+    $req->execute();
+    // si il y a un résultat, récupération
+    while($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+      $resultat[] = $ligne;
+
+        print(json_encode($resultat));
+
+}
+  } catch (DOException $e) {
+    print "Erreur!%".$e->getMessage();
+    die();
+  }
+
+
+  }
+  elseif($_REQUEST["operation"]=="showPlanteAnnuelle"){
+
+try{
+    print "showPlanteVivace%";
+    $cnx = connexionPDO();
+    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(type.libelle) LIKE 'annuelle' ORDER BY nom;");
+    $req->execute();
+    // si il y a un résultat, récupération
+    while($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+      $resultat[] = $ligne;
+
+        print(json_encode($resultat));
+
+}
+  } catch (DOException $e) {
+    print "Erreur!%".$e->getMessage();
+    die();
+  }
+
+
+  }
+
+  elseif($_REQUEST["operation"]=="showPlanteOmbre"){
+
+try{
+    print "showPlanteVivace%";
+    $cnx = connexionPDO();
+    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(exposition.libelle) LIKE 'ombre' ORDER BY nom;");
+    $req->execute();
+    // si il y a un résultat, récupération
+    while($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+      $resultat[] = $ligne;
+
+        print(json_encode($resultat));
+
+}
+  } catch (DOException $e) {
+    print "Erreur!%".$e->getMessage();
+    die();
+  }
+
+
+  }
+
+  elseif($_REQUEST["operation"]=="showPlanteMiOmbre"){
+
+try{
+    print "showPlanteVivace%";
+    $cnx = connexionPDO();
+    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(exposition.libelle) LIKE 'mi ombre' ORDER BY nom;");
+    $req->execute();
+    // si il y a un résultat, récupération
+    while($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+      $resultat[] = $ligne;
+
+        print(json_encode($resultat));
+
+}
+  } catch (DOException $e) {
+    print "Erreur!%".$e->getMessage();
+    die();
+  }
+
+
+  }
+
+  elseif($_REQUEST["operation"]=="showPlanteSoleil"){
+
+try{
+    print "showPlanteVivace%";
+    $cnx = connexionPDO();
+    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(exposition.libelle) LIKE 'soleil' ORDER BY nom;");
+    $req->execute();
+    // si il y a un résultat, récupération
+    while($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+      $resultat[] = $ligne;
+
+        print(json_encode($resultat));
+
+}
+  } catch (DOException $e) {
+    print "Erreur!%".$e->getMessage();
+    die();
+  }
+
+
+  }
+
+
+
+
+ ?>

@@ -88,7 +88,7 @@ public class Manager {
         liste.add(password);
 
          parameters = new JSONArray(liste);
-       accesDistant.envoi("login", parameters);
+       accesDistant.envoi("serveur", parameters);
 
     }
 
