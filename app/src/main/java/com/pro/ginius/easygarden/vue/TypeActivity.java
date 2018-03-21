@@ -3,9 +3,12 @@ package com.pro.ginius.easygarden.vue;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.pro.ginius.easygarden.R;
@@ -21,6 +24,7 @@ public class TypeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
         controle = Manager.getInstance(this);
+        init();
     }
 
     @Override
@@ -79,4 +83,43 @@ public class TypeActivity extends AppCompatActivity {
 
 
     }
+
+    public void init(){
+        //gestion de l'évènement sur le bouton vivace
+        ecouteVivace();
+        //gestion de l'évènement sur le bouton vivace
+        ecouteAnnuelle();
+    }
+
+    /**
+     * gestion du bouton vivace
+     */
+    public void ecouteVivace(){
+        ((Button) findViewById(R.id.btVivace)).setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //
+                controle.RecupPlanteByVicace();
+
+            }
+        });
+    }
+
+    /**
+     * gestion du bouton annuelle
+     */
+    public void ecouteAnnuelle(){
+        ((Button) findViewById(R.id.btVivace)).setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //
+                controle.RecupPlanteByAnnuelle();
+
+            }
+        });
+    }
+
+
 }

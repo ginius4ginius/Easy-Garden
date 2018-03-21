@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.pro.ginius.easygarden.model.AccesDistant;
+import com.pro.ginius.easygarden.model.Plante;
 import com.pro.ginius.easygarden.model.Profil;
 import com.pro.ginius.easygarden.vue.LoginActivity;
 import com.pro.ginius.easygarden.vue.MainActivity;
@@ -25,6 +26,7 @@ public class Manager {
     private static AccesDistant accesDistant;
     private static Context c;
     private JSONArray parameters;
+    public ArrayList<Plante> listePlantes = new ArrayList<Plante>();
 
     //constructeur privée (pour singleton)
     private Manager(){
@@ -42,6 +44,22 @@ public class Manager {
         accesDistant  = new AccesDistant();
         return instance;
 
+    }
+
+    public ArrayList<Plante> getListePlantes() {
+        return listePlantes;
+    }
+
+    public void setListePlantes(ArrayList<Plante> listePlantes) {
+        this.listePlantes = listePlantes;
+    }
+
+    public void setProfil(Profil profil){
+        utilisateur = profil;
+    }
+
+    public Profil getProfil(){
+        return utilisateur;
     }
 
     /**
@@ -75,15 +93,21 @@ public class Manager {
     }
 
     /**
-     * inserer les données récup de la bd dans le profil du manager
-     * @param profil
+     * fonction qui récupère les plantes vivace de la bd
      */
-    public void setProfil(Profil profil){
-        utilisateur = profil;
+    public void RecupPlanteByVicace(){
+
+        accesDistant.envoi("showPlanteVivace", null);
+
     }
 
-    public Profil getProfil(){
-        return utilisateur;
+    /**
+     * fonction qui récupère les plantes annuelle de la bd
+     */
+    public void RecupPlanteByAnnuelle(){
+
+        accesDistant.envoi("showPlanteAnnuelle", null);
+
     }
 }
 
