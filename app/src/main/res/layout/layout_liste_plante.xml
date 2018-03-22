@@ -29,24 +29,30 @@
                     android:id="@+id/tvNom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:gravity="left"
+                    android:text="nom"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvNomScientifique"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="nom scientifique" />
+                    android:gravity="left"
+                    android:text="nom scientifique"
+                    android:textStyle="italic" />
 
                 <TextView
                     android:id="@+id/tvType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="left"
                     android:text="@string/menu_type" />
 
                 <TextView
                     android:id="@+id/tvExposition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="left"
                     android:text="exposition" />
             </LinearLayout>
 
@@ -54,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
                 android:orientation="vertical">
 
                 <ImageView
@@ -69,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -80,10 +88,6 @@
                     android:paddingVertical="25dp"
                     app:srcCompat="@drawable/telechargement" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"></LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -100,6 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center_horizontal"
                 android:text="Descriptif" />
         </LinearLayout>
 

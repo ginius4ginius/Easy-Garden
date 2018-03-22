@@ -1,14 +1,10 @@
 package com.pro.ginius.easygarden.controleur;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 
 import com.pro.ginius.easygarden.model.AccesDistant;
 import com.pro.ginius.easygarden.model.Plante;
 import com.pro.ginius.easygarden.model.Profil;
-import com.pro.ginius.easygarden.vue.LoginActivity;
-import com.pro.ginius.easygarden.vue.MainActivity;
 
 import org.json.JSONArray;
 
@@ -88,7 +84,7 @@ public class Manager {
         liste.add(password);
 
          parameters = new JSONArray(liste);
-       accesDistant.envoi("serveur", parameters);
+       accesDistant.envoi("login", parameters);
 
     }
 

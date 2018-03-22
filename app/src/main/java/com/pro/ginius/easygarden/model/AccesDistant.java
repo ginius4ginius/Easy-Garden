@@ -21,8 +21,8 @@ public class AccesDistant implements AsyncResponse{
     //variables
     Manager controle;
     //constante
-    public static final String SERVEURADDR = "http://192.168.0.14/easyGarden/serveur.php";
-    //public static final String SERVEURADDR = "http://172.16.1.134/easyGarden/login.php";//ecole
+    //public static final String SERVEURADDR = "http://192.168.0.14/easyGarden/serveur.php";
+    public static final String SERVEURADDR = "http://172.16.1.134/easyGarden/serveur.php";//ecole
 
     /**
      * constructeur
@@ -40,7 +40,7 @@ public class AccesDistant implements AsyncResponse{
         Log.d("serveur", "****************" + output);
         //découpage du message reçu avec %
         String[] message = output.split("%");
-        //dans message[0] = "enreg","serveur","erreur !"
+        //dans message[0] = "enreg","login","erreur !"
         //dans message[1] = reste du message
 
         //si il y a 2 cases
@@ -48,8 +48,8 @@ public class AccesDistant implements AsyncResponse{
             if (message[0].equals("enreg")) {
                 Log.d("enreg", "**************" + message[1]);
             } else {
-                if (message[0].equals("serveur")) {
-                    Log.d("serveur", "**************" + message[1]);
+                if (message[0].equals("login")) {
+                    Log.d("login", "**************" + message[1]);
                     try {
                         JSONObject identifiant = new JSONObject(message[1]);
                         String nom = identifiant.getString("nom");
@@ -60,6 +60,7 @@ public class AccesDistant implements AsyncResponse{
                         String email = identifiant.getString("email");
                         Profil profil = new Profil(nom, prenom, age, pseudo, password, email);
                         controle.setProfil(profil);
+                        Log.d("erreur", profil.toString());
                     } catch (JSONException e) {
                         Log.d("erreur", "Recup profil conversion JSON impossible" + e.toString());
                         e.printStackTrace();
