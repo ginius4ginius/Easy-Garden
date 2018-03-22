@@ -3,7 +3,7 @@
 include("connexion.php");
 
 //déclaration des variables
-$donn = $_REQUEST["lesdonnees"];
+$donn = isset($_REQUEST["lesdonnees"]) ? $_REQUEST["lesdonnees"] : null;
 
 //controle de la réception des paramètres
 if(isset($_REQUEST["operation"])){
@@ -66,15 +66,18 @@ if(isset($_REQUEST["operation"])){
 try{
     print "showPlanteVivace%";
     $cnx = connexionPDO();
-    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(type.libelle) LIKE 'vivace' ORDER BY nom;");
+    $larequete = "SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien AS image FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(type.libelle) LIKE 'vivace' ORDER BY nom;";
+    $req = $cnx->prepare($larequete);
     $req->execute();
     // si il y a un résultat, récupération
     while($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+      foreach($ligne as $k => $v)
+        $ligne[$k] = utf8_encode($v);
       $resultat[] = $ligne;
-
-        print(json_encode($resultat));
-
 }
+  print(json_encode($resultat));
+
+
   } catch (DOException $e) {
     print "Erreur!%".$e->getMessage();
     die();
@@ -85,17 +88,19 @@ try{
   elseif($_REQUEST["operation"]=="showPlanteAnnuelle"){
 
 try{
-    print "showPlanteVivace%";
+    print "showPlanteAnnuelle%";
     $cnx = connexionPDO();
-    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(type.libelle) LIKE 'annuelle' ORDER BY nom;");
+
+    $larequete = "SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien AS image FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(type.libelle) LIKE 'annuelle' ORDER BY nom;";
+    $req = $cnx->prepare($larequete);
     $req->execute();
     // si il y a un résultat, récupération
     while($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+      foreach($ligne as $k => $v)
+        $ligne[$k] = utf8_encode($v);
       $resultat[] = $ligne;
-
-        print(json_encode($resultat));
-
 }
+print(json_encode($resultat));
   } catch (DOException $e) {
     print "Erreur!%".$e->getMessage();
     die();
@@ -107,17 +112,20 @@ try{
   elseif($_REQUEST["operation"]=="showPlanteOmbre"){
 
 try{
-    print "showPlanteVivace%";
+    print "showPlanteOmbre%";
     $cnx = connexionPDO();
-    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(exposition.libelle) LIKE 'ombre' ORDER BY nom;");
+
+    $larequete = "SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien AS image FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(exposition.libelle) LIKE 'ombre' ORDER BY nom;";
+    $req = $cnx->prepare($larequete);
     $req->execute();
     // si il y a un résultat, récupération
     while($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+      foreach($ligne as $k => $v)
+        $ligne[$k] = utf8_encode($v);
       $resultat[] = $ligne;
-
-        print(json_encode($resultat));
-
 }
+
+print(json_encode($resultat));
   } catch (DOException $e) {
     print "Erreur!%".$e->getMessage();
     die();
@@ -129,17 +137,19 @@ try{
   elseif($_REQUEST["operation"]=="showPlanteMiOmbre"){
 
 try{
-    print "showPlanteVivace%";
+    print "showPlanteMiOmbre%";
     $cnx = connexionPDO();
-    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(exposition.libelle) LIKE 'mi ombre' ORDER BY nom;");
+
+    $larequete = "SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien AS image FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(exposition.libelle) LIKE 'mi ombre' ORDER BY nom;";
+    $req = $cnx->prepare($larequete);
     $req->execute();
     // si il y a un résultat, récupération
     while($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+      foreach($ligne as $k => $v)
+        $ligne[$k] = utf8_encode($v);
       $resultat[] = $ligne;
-
-        print(json_encode($resultat));
-
 }
+  print(json_encode($resultat));
   } catch (DOException $e) {
     print "Erreur!%".$e->getMessage();
     die();
@@ -151,17 +161,17 @@ try{
   elseif($_REQUEST["operation"]=="showPlanteSoleil"){
 
 try{
-    print "showPlanteVivace%";
+    print "showPlanteSoleil%";
     $cnx = connexionPDO();
-    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(exposition.libelle) LIKE 'soleil' ORDER BY nom;");
+    $req = $cnx->prepare("SELECT nom, nom_scientifique,descriptif,exposition.libelle AS exposition,type.libelle AS type,imageplante.lien AS image FROM plante JOIN exposition ON exposition.id = plante.exposition JOIN type ON type.id = plante.type JOIN imageplante ON imageplante.id = plante.image WHERE lower(exposition.libelle) LIKE 'soleil' ORDER BY nom;");
     $req->execute();
     // si il y a un résultat, récupération
     while($ligne = $req->fetch(PDO::FETCH_ASSOC)){
+      foreach($ligne as $k => $v)
+        $ligne[$k] = utf8_encode($v);
       $resultat[] = $ligne;
-
-        print(json_encode($resultat));
-
 }
+print(json_encode($resultat));
   } catch (DOException $e) {
     print "Erreur!%".$e->getMessage();
     die();
@@ -170,7 +180,6 @@ try{
 
   }
 
-
-
+}
 
  ?>

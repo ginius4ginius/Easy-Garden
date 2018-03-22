@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Created by fcd on 22/03/2018.
  */
 
-public class ListePlanteAdapter extends BaseAdapter {
+public class ListePlanteAdapterEnsoleillement extends BaseAdapter {
 
     //déclaration des variables
     private ArrayList<Plante> lesPlantes;
@@ -33,7 +33,7 @@ public class ListePlanteAdapter extends BaseAdapter {
     /**
      * constructeur initialisant la liste des plantes
      */
-    public ListePlanteAdapter(Context c, ArrayList<Plante> lesPlantes){
+    public ListePlanteAdapterEnsoleillement(Context c, ArrayList<Plante> lesPlantes){
 
         this.lesPlantes = lesPlantes;
         this.inflater = LayoutInflater.from(c);

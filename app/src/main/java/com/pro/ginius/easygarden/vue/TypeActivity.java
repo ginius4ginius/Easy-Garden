@@ -24,11 +24,11 @@ public class TypeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
-        controle = Manager.getInstance(this);
+        controle = Manager.getInstance(null);
         init();
-        creerListe();
     }
 
     @Override
@@ -84,8 +84,6 @@ public class TypeActivity extends AppCompatActivity {
 
             default : return super.onOptionsItemSelected(item);
         }
-
-
     }
 
     public void init(){
@@ -104,7 +102,9 @@ public class TypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //
+
                 controle.RecupPlanteByVicace();
+                creerListe();
 
             }
         });
@@ -119,7 +119,10 @@ public class TypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //
+
                 controle.RecupPlanteByAnnuelle();
+                creerListe();
+
 
             }
         });
@@ -130,12 +133,10 @@ public class TypeActivity extends AppCompatActivity {
      */
     private void creerListe(){
         ArrayList<Plante> lesPlantes = controle.getListePlantes();
-        //if(lesPlantes!= null){
+        if(lesPlantes != null){
             ListView listePlantes = (ListView)findViewById(R.id.listePlantes);
             ListePlanteAdapter adapter = new ListePlanteAdapter(this,lesPlantes);
             listePlantes.setAdapter(adapter);
-       // }
+        }
     }
-
-
 }

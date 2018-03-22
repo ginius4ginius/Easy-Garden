@@ -47,8 +47,7 @@ public class AccesDistant implements AsyncResponse{
         if (message.length > 1) {
             if (message[0].equals("enreg")) {
                 Log.d("enreg", "**************" + message[1]);
-            } else {
-                if (message[0].equals("login")) {
+            } else if (message[0].equals("login")) {
                     Log.d("login", "**************" + message[1]);
                     try {
                         JSONObject identifiant = new JSONObject(message[1]);
@@ -64,8 +63,7 @@ public class AccesDistant implements AsyncResponse{
                         Log.d("erreur", "Recup profil conversion JSON impossible" + e.toString());
                         e.printStackTrace();
                     }
-                } else {
-                    if (message[0].equals("showPlanteVivace")) {
+                } else if (message[0].equals("showPlanteVivace")) {
                         Log.d("showVivace", "**************" + message[1]);
                         try {
                             JSONArray liste = new JSONArray(message[1]);
@@ -87,8 +85,7 @@ public class AccesDistant implements AsyncResponse{
                             Log.d("erreur", "Recup liste Plante Vivaces conversion JSON impossible" + e.toString());
                             e.printStackTrace();
                         }
-                    } else {
-                        if (message[0].equals("showPlanteAnnuelle")) {
+                    } else if (message[0].equals("showPlanteAnnuelle")) {
                             Log.d("showAnnuelle", "**************" + message[1]);
                             try {
                                 JSONArray liste = new JSONArray(message[1]);
@@ -110,16 +107,79 @@ public class AccesDistant implements AsyncResponse{
                                 Log.d("erreur", "Recup liste Plante Annuelles conversion JSON impossible" + e.toString());
                                 e.printStackTrace();
                             }
-                        }
-                        if (message[0].equals("erreur!")) {
-                            Log.d("erreur!", "**************" + message[1]);
-                        }
-                    }
-                }
-            }
+                        } else if (message[0].equals("showPlanteOmbre")) {
+                                Log.d("showOmbre", "**************" + message[1]);
+                                try {
+                                    JSONArray liste = new JSONArray(message[1]);
+                                    ArrayList<Plante> l = new ArrayList<Plante>();
+                                    for (int k = 0; k < liste.length(); k++) {
+                                        JSONObject ligne = new JSONObject(liste.get(k).toString());
+                                        String nom = ligne.getString("nom");
+                                        String nomScientifique = ligne.getString("nom_scientifique");
+                                        String descriptif = ligne.getString("descriptif");
+                                        String type = ligne.getString("type");
+                                        String exposition = ligne.getString("exposition");
+                                        String image = ligne.getString("image");
 
+                                        Plante plante = new Plante(nom, nomScientifique, descriptif, exposition, type, image);
+                                        l.add(plante);
+                                    }
+                                    controle.setListePlantes2(l);
+                                } catch (JSONException e) {
+                                    Log.d("erreur", "Recup liste Plante ombre conversion JSON impossible" + e.toString());
+                                    e.printStackTrace();
+                                }
+                            } else if (message[0].equals("showPlanteMiOmbre")) {
+                                    Log.d("showMiOmbre", "**************" + message[1]);
+                                    try {
+                                        JSONArray liste = new JSONArray(message[1]);
+                                        ArrayList<Plante> l = new ArrayList<Plante>();
+                                        for (int k = 0; k < liste.length(); k++) {
+                                            JSONObject ligne = new JSONObject(liste.get(k).toString());
+                                            String nom = ligne.getString("nom");
+                                            String nomScientifique = ligne.getString("nom_scientifique");
+                                            String descriptif = ligne.getString("descriptif");
+                                            String type = ligne.getString("type");
+                                            String exposition = ligne.getString("exposition");
+                                            String image = ligne.getString("image");
+
+                                            Plante plante = new Plante(nom, nomScientifique, descriptif, exposition, type, image);
+                                            l.add(plante);
+                                        }
+                                        controle.setListePlantes2(l);
+                                    } catch (JSONException e) {
+                                        Log.d("erreur", "Recup liste Plante mi ombre conversion JSON impossible" + e.toString());
+                                        e.printStackTrace();
+                                    }
+                                } else if (message[0].equals("showPlanteSoleil")) {
+                                        Log.d("showSoleil", "**************" + message[1]);
+                                        try {
+                                            JSONArray liste = new JSONArray(message[1]);
+                                            ArrayList<Plante> l = new ArrayList<Plante>();
+                                            for (int k = 0; k < liste.length(); k++) {
+                                                JSONObject ligne = new JSONObject(liste.get(k).toString());
+                                                String nom = ligne.getString("nom");
+                                                String nomScientifique = ligne.getString("nom_scientifique");
+                                                String descriptif = ligne.getString("descriptif");
+                                                String type = ligne.getString("type");
+                                                String exposition = ligne.getString("exposition");
+                                                String image = ligne.getString("image");
+
+                                                Plante plante = new Plante(nom, nomScientifique, descriptif, exposition, type, image);
+                                                l.add(plante);
+                                            }
+                                            controle.setListePlantes2(l);
+                                        } catch (JSONException e) {
+                                            Log.d("erreur", "Recup liste Plante en soleil conversion JSON impossible" + e.toString());
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                    if (message[0].equals("erreur!")) {
+                                        Log.d("erreur!", "**************" + message[1]);
+                                    }
         }
     }
+
 
     public void envoi(String operation, JSONArray lesDonneesJSON){
         AccesHTTP accesDonnees = new AccesHTTP();
