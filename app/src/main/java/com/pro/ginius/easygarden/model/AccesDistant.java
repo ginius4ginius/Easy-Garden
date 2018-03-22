@@ -60,14 +60,13 @@ public class AccesDistant implements AsyncResponse{
                         String email = identifiant.getString("email");
                         Profil profil = new Profil(nom, prenom, age, pseudo, password, email);
                         controle.setProfil(profil);
-                        Log.d("erreur", profil.toString());
                     } catch (JSONException e) {
                         Log.d("erreur", "Recup profil conversion JSON impossible" + e.toString());
                         e.printStackTrace();
                     }
                 } else {
                     if (message[0].equals("showPlanteVivace")) {
-                        Log.d("showPlanteVivace", "**************" + message[1]);
+                        Log.d("showVivace", "**************" + message[1]);
                         try {
                             JSONArray liste = new JSONArray(message[1]);
                             ArrayList<Plante> l = new ArrayList<Plante>();
@@ -90,7 +89,7 @@ public class AccesDistant implements AsyncResponse{
                         }
                     } else {
                         if (message[0].equals("showPlanteAnnuelle")) {
-                            Log.d("showPlanteAnnuelle", "**************" + message[1]);
+                            Log.d("showAnnuelle", "**************" + message[1]);
                             try {
                                 JSONArray liste = new JSONArray(message[1]);
                                 ArrayList<Plante> l = new ArrayList<Plante>();

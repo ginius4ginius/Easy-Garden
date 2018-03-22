@@ -8,15 +8,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.pro.ginius.easygarden.R;
 import com.pro.ginius.easygarden.controleur.Manager;
+import com.pro.ginius.easygarden.model.Plante;
+
+import java.util.ArrayList;
 
 public class TypeActivity extends AppCompatActivity {
 
     //déclaration des variables
-    Manager controle;
+    private Manager controle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,7 @@ public class TypeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_type);
         controle = Manager.getInstance(this);
         init();
+        creerListe();
     }
 
     @Override
@@ -109,7 +114,7 @@ public class TypeActivity extends AppCompatActivity {
      * gestion du bouton annuelle
      */
     public void ecouteAnnuelle(){
-        ((Button) findViewById(R.id.btVivace)).setOnClickListener(new Button.OnClickListener(){
+        ((Button) findViewById(R.id.btAnnuelle)).setOnClickListener(new Button.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -118,6 +123,18 @@ public class TypeActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    /**
+     * permet de créer la listeAdapter
+     */
+    private void creerListe(){
+        ArrayList<Plante> lesPlantes = controle.getListePlantes();
+        //if(lesPlantes!= null){
+            ListView listePlantes = (ListView)findViewById(R.id.listePlantes);
+            ListePlanteAdapter adapter = new ListePlanteAdapter(this,lesPlantes);
+            listePlantes.setAdapter(adapter);
+       // }
     }
 
 

@@ -93,7 +93,12 @@ public class Manager {
      */
     public void RecupPlanteByVicace(){
 
-        accesDistant.envoi("showPlanteVivace", null);
+        List liste = new ArrayList();
+        liste.add(instance.getProfil());
+
+        parameters = new JSONArray(liste);
+
+        accesDistant.envoi("showPlanteVivace", parameters);
 
     }
 
@@ -102,7 +107,12 @@ public class Manager {
      */
     public void RecupPlanteByAnnuelle(){
 
-        accesDistant.envoi("showPlanteAnnuelle", null);
+        List liste = new ArrayList();
+        liste.add(instance.getProfil());
+
+        parameters = new JSONArray(liste);
+
+        accesDistant.envoi("showPlanteAnnuelle", parameters);
 
     }
 }
