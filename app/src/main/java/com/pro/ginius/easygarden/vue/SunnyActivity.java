@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.pro.ginius.easygarden.R;
 import com.pro.ginius.easygarden.controleur.Manager;
+import com.pro.ginius.easygarden.model.ListePlanteAdapter;
 import com.pro.ginius.easygarden.model.Plante;
 
 import java.util.ArrayList;
@@ -151,11 +152,11 @@ public class SunnyActivity extends AppCompatActivity {
      * permet de créer la listeAdapter
      */
     private void creerListe(){
-        ArrayList<Plante> lesPlantes2 = c.getListePlantes2();
-        if(lesPlantes2 != null){
-            ListView listePlantesb = (ListView)findViewById(R.id.listePlantes);
-            ListePlanteAdapterEnsoleillement adapter = new ListePlanteAdapterEnsoleillement(this,lesPlantes2);
-            listePlantesb.setAdapter(adapter);
+        ArrayList<Plante> lesPlantes = c.getListePlantes();
+        if(lesPlantes != null){
+            ListView listePlantes = (ListView)findViewById(R.id.listePlantes2);
+            ListePlanteAdapter adapter = new ListePlanteAdapter(this,lesPlantes);
+            listePlantes.setAdapter(adapter);
         }
     }
 

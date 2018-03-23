@@ -1,4 +1,4 @@
-package com.pro.ginius.easygarden.vue;
+package com.pro.ginius.easygarden.model;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -23,18 +23,15 @@ public class ListePlanteAdapter extends BaseAdapter {
     //déclaration des variables
     private ArrayList<Plante> lesPlantes;
     private LayoutInflater inflater;
-    private Integer[] tab_images_pour_la_liste = {
-            R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin,
-            R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin,
-            R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin, R.drawable.jardin,
-    };
+    Context c;
 
 
     /**
      * constructeur initialisant la liste des plantes
      */
-    public ListePlanteAdapter(Context c, ArrayList<Plante> lesPlantes){
+    public ListePlanteAdapter(Context cont, ArrayList<Plante> lesPlantes){
 
+        this.c = cont;
         this.lesPlantes = lesPlantes;
         this.inflater = LayoutInflater.from(c);
     }
@@ -106,8 +103,8 @@ public class ListePlanteAdapter extends BaseAdapter {
         holder.tvType.setText(lesPlantes.get(i).getType().toString());
         holder.tvExposition.setText(lesPlantes.get(i).getExposition().toString());
         holder.btnAddFavori.setTag(i);
-        holder.imagePlante.setImageResource(tab_images_pour_la_liste[i]);
-
+        //holder.imagePlante.setImageResource(tab_images_pour_la_liste[i]);
+        PicassoPlante.downloadImage(c,lesPlantes.get(i).getImage(),holder.imagePlante);
 
         return view;
     }

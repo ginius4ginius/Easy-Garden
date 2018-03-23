@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 21 Mars 2018 à 05:07
+-- Généré le :  Ven 23 Mars 2018 à 08:49
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -61,8 +61,8 @@ INSERT INTO `imageplante` (`id`, `lien`) VALUES
 (3, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/G/a/Gaura-lindheimeri-Blanche-79028-1.jpg'),
 (4, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/g/e/geranium-orion-7289-1.jpg'),
 (5, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/e/c/echinacea-purpurea-7753-5.jpg'),
-(6, 'https://www.leclosdarmoise.com/1715-large_default/acanthus-spinosus-acanthe.jpg'),
-(7, 'https://www.leclosdarmoise.com/5121-large_default/acorus-gramineus-ogon-.jpg'),
+(6, 'http://www.perennials.com/watermark.php?path=perennials/1-006-050.jpg&watermark=images/watermark_heritage.png&xpos=.88&ypos=.95'),
+(7, 'http://www.pleasantrunnursery.com/_ccLib/image/plants/DETA-636.jpg'),
 (8, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/A/j/Ajuga-reptans-Alba-81188-1.jpg'),
 (9, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/A/r/Aruncus-sinensis-Zweiweltenkind-80168-1.jpg'),
 (10, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/A/s/Astilbe-arendsii-Bumalda-80345-1.jpg'),
@@ -76,16 +76,16 @@ INSERT INTO `imageplante` (`id`, `lien`) VALUES
 (18, 'https://www.coclicoh.com/2197-large_default/verveine-retombante-empress-flair-red.jpg'),
 (19, 'https://www.coclicoh.com/3294-large_default/pelargonium-pac-peltatum-dubbel-mexica-ruby.jpg'),
 (20, 'https://www.coclicoh.com/1948-large_default/bracteantha-immortelle-totally-yellow.jpg'),
-(21, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Alternanthera%20\'Little%20Ruby\'-550x550.jpg'),
-(33, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/jewel-mixture-550x550.jpg'),
-(32, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/F/u/Fuchsia-Omar-Giant-491570-1.jpg'),
-(31, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/B/e/Begonia-retombant-Illumination-tons-abricot-82048-1.jpg'),
-(30, 'https://www.coclicoh.com/3416-large_default/dahlia-dahlietta-select-emily.jpg'),
-(29, 'https://www.coclicoh.com/2107-large_default/nemesia-retombant-sunsatia-plus-lychee.jpg'),
-(34, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/carambolier-550x550.jpg'),
-(35, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Cosmos_bipp_\'Sensation-mixture\'-550x550.jpg'),
-(36, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Dyssodia_golden-dawn-550x550.jpg'),
-(37, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Celosia_fresh-look-red-550x550.jpg');
+(21, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSypttKJZwcyeoDNL-mrd16-tcPBs9sKDmAhWvEx1CTz28xX-eV'),
+(26, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/jewel-mixture-550x550.jpg'),
+(25, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/F/u/Fuchsia-Omar-Giant-491570-1.jpg'),
+(24, 'https://www.promessedefleurs.com/media/catalog/product/cache/1/image/615x/9df78eab33525d08d6e5fb8d27136e95/B/e/Begonia-retombant-Illumination-tons-abricot-82048-1.jpg'),
+(23, 'https://www.coclicoh.com/3416-large_default/dahlia-dahlietta-select-emily.jpg'),
+(22, 'https://www.coclicoh.com/2107-large_default/nemesia-retombant-sunsatia-plus-lychee.jpg'),
+(27, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/carambolier-550x550.jpg'),
+(28, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Cosmos_bipp_\'Sensation-mixture\'-550x550.jpg'),
+(29, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Dyssodia_golden-dawn-550x550.jpg'),
+(30, 'http://horticulture.epsh.qc.ca/produits/image/cache/catalog/Celosia_fresh-look-red-550x550.jpg');
 
 -- --------------------------------------------------------
 
@@ -180,7 +180,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nom`, `prenom`, `age`, `pseudo`, `password`, `email`) VALUES
 (1, 'derieu', 'vincent', 33, 'ginius', 'DERIEUV93', 'ginius4@hotmail.com'),
-(8, 'derieu', 'lise', 34, 'bouh', '1234', 'bouh20@hotmail.com');
+(11, 'test', 'test', 33, 'test', 'test', 'test'),
+(8, 'derieu', 'lise', 34, 'bouh', '1234', 'bouh20@hotmail.com'),
+(9, 'leacorne', 'licone', 11, 'tata', 'l064t', 'dvvbh@fhfg.com'),
+(10, 'volpini', 'choupette', 25, 'choupette', '3009', '');
 
 --
 -- Index pour les tables exportées
@@ -247,7 +250,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

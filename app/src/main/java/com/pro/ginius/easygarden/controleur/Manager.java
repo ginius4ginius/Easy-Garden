@@ -23,7 +23,6 @@ public class Manager {
     private static Context c;
     private JSONArray parameters;
     public ArrayList<Plante> listePlantes = new ArrayList<Plante>();
-    public ArrayList<Plante> listePlantes2 = new ArrayList<Plante>();
 
     //constructeur privée (pour singleton)
     private Manager(){
@@ -50,15 +49,6 @@ public class Manager {
 
     public void setListePlantes(ArrayList<Plante> listePlantes) {
         this.listePlantes = listePlantes;
-    }
-
-    public ArrayList<Plante> getListePlantes2(){
-
-        return listePlantes2;
-    }
-
-    public void setListePlantes2(ArrayList<Plante> listePlantes) {
-        this.listePlantes2 = listePlantes;
     }
 
     public void setProfil(Profil profil){

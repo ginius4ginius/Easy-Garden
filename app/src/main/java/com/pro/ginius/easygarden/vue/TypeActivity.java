@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.pro.ginius.easygarden.R;
 import com.pro.ginius.easygarden.controleur.Manager;
+import com.pro.ginius.easygarden.model.ListePlanteAdapter;
 import com.pro.ginius.easygarden.model.Plante;
 
 import java.util.ArrayList;

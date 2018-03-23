@@ -21,8 +21,8 @@ public class AccesDistant implements AsyncResponse{
     //variables
     Manager controle;
     //constante
-    //public static final String SERVEURADDR = "http://192.168.0.14/easyGarden/serveur.php";
-    public static final String SERVEURADDR = "http://172.16.1.134/easyGarden/serveur.php";//ecole
+    public static final String SERVEURADDR = "http://192.168.0.14/easyGarden/serveur.php";
+   // public static final String SERVEURADDR = "http://172.16.1.134/easyGarden/serveur.php";//ecole
 
     /**
      * constructeur
@@ -124,7 +124,7 @@ public class AccesDistant implements AsyncResponse{
                                         Plante plante = new Plante(nom, nomScientifique, descriptif, exposition, type, image);
                                         l.add(plante);
                                     }
-                                    controle.setListePlantes2(l);
+                                    controle.setListePlantes(l);
                                 } catch (JSONException e) {
                                     Log.d("erreur", "Recup liste Plante ombre conversion JSON impossible" + e.toString());
                                     e.printStackTrace();
@@ -146,7 +146,7 @@ public class AccesDistant implements AsyncResponse{
                                             Plante plante = new Plante(nom, nomScientifique, descriptif, exposition, type, image);
                                             l.add(plante);
                                         }
-                                        controle.setListePlantes2(l);
+                                        controle.setListePlantes(l);
                                     } catch (JSONException e) {
                                         Log.d("erreur", "Recup liste Plante mi ombre conversion JSON impossible" + e.toString());
                                         e.printStackTrace();
@@ -168,7 +168,7 @@ public class AccesDistant implements AsyncResponse{
                                                 Plante plante = new Plante(nom, nomScientifique, descriptif, exposition, type, image);
                                                 l.add(plante);
                                             }
-                                            controle.setListePlantes2(l);
+                                            controle.setListePlantes(l);
                                         } catch (JSONException e) {
                                             Log.d("erreur", "Recup liste Plante en soleil conversion JSON impossible" + e.toString());
                                             e.printStackTrace();
