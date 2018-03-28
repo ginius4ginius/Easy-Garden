@@ -22,7 +22,8 @@ public class ProfilActivity extends AppCompatActivity {
     private String nom, prenom,pseudo,password,email;
     private Integer age;
     private Manager controle;
-    private Profil profil = controle.getProfil();
+    private Profil profil;
+
 
 
     @Override
@@ -31,6 +32,7 @@ public class ProfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
         controle = Manager.getInstance(this);
+         profil = controle.getProfil();
         init();
     }
 
@@ -158,6 +160,8 @@ public class ProfilActivity extends AppCompatActivity {
                 controle.updateProfil(nom,prenom,age,pseudo,password,email);
 
                 initialisationProfil();//initialisation des champs
+                retourMain();//retour à la page d'accueil
+
             }
         });
     }
@@ -166,8 +170,17 @@ public class ProfilActivity extends AppCompatActivity {
         //initialisation des champs
         UserNomEt.setText(profil.getNom());
         UserPrenomEt.setText(profil.getPrenom());
-        UserAgeEt.setText(profil.getAge());
+        UserAgeEt.setText(profil.getAge().toString());
         UserPseudoEt.setText(profil.getPseudo());
         UserPasswordEt.setText(profil.getPassword());
+
+
+    }
+
+    public void retourMain(){
+        Toast.makeText(this, "profil modifié", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(ProfilActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
