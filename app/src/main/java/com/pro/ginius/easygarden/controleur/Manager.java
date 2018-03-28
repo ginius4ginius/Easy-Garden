@@ -68,7 +68,7 @@ public class Manager {
      * @param password
      * @param email
      */
-    public void creerUtilisatreur(String nom, String prenom, Integer age, String pseudo, String password, String email){
+    public void creerUtilisateur(String nom, String prenom, Integer age, String pseudo, String password, String email){
         Profil newP = new Profil(nom,prenom,age,pseudo,password,email);
         accesDistant.envoi("enreg",newP.convertToJSONArray());
     }
@@ -86,7 +86,26 @@ public class Manager {
 
          parameters = new JSONArray(liste);
        accesDistant.envoi("login", parameters);
+    }
 
+    /**
+     * fonction pour mettre à jour le profil utilisateur
+     * @param nom
+     * @param prenom
+     * @param age
+     * @param pseudo
+     */
+    public void updateProfil(String nom, String prenom, int age, String pseudo,String password, String email){
+        List liste = new ArrayList();
+        liste.add(nom);
+        liste.add(prenom);
+        liste.add(age);
+        liste.add(pseudo);
+        liste.add(password);
+        liste.add(email);
+
+        parameters = new JSONArray(liste);
+        accesDistant.envoi("updateProfil", parameters);
     }
 
     /**
@@ -157,6 +176,22 @@ public class Manager {
 
         accesDistant.envoi("showPlanteSoleil", parameters);
 
+    }
+
+    /**
+     * fonction qui récupère les plantes en favori de la bd
+     */
+    public List RecupPlanteByFavori(){
+
+        List liste = new ArrayList();
+        liste.add(instance.getProfil());
+
+        parameters = new JSONArray(liste);
+
+       // accesDistant.envoi("showPlanteFavori", parameters);
+        //ne reste plus qu'a réaliser le code php
+        //ne reste plus qu'a réaliser le layout liste plante favori
+        return liste;
     }
 
 

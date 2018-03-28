@@ -5,21 +5,38 @@
 
 
     <item
-        android:id="@+id/menu_ensoleillement"
-        android:title="@string/menu_ensoleillement"
+        android:id="@+id/menu_exposition"
+        android:title="@string/exposition"
+        android:orderInCategory="1"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menu_acceuil"
+        android:id="@+id/menu_profil"
+        android:title="@string/profil"
+        android:orderInCategory="4"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_favori"
+        android:title="@string/favori"
+        android:orderInCategory="3"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_accueil"
         android:icon="@drawable/home"
         android:title="@string/menuhome"
         app:showAsAction="always" />
     <item
+        android:id="@+id/menu_login"
+        android:icon="@drawable/login"
+        android:title="@string/login"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/menu_type"
-        android:title="@string/menu_type"
+        android:title="@string/type"
+        android:orderInCategory="2"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_deconnect"
-        android:icon="@drawable/disconnect"
+        android:icon="@drawable/logout"
         android:title="@string/menuDeconnect"
         app:showAsAction="always" />
     <item

@@ -68,7 +68,7 @@ public class RegisterActivity extends Activity {
                 email = emailEt.getText().toString();
 
                 Toast.makeText(RegisterActivity.this, "test d'enregistrement", Toast.LENGTH_SHORT).show();
-                manager.creerUtilisatreur(nom,prenom,age,pseudo,password,email);
+                manager.creerUtilisateur(nom,prenom,age,pseudo,password,email);
 
                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                 startActivity(intent);

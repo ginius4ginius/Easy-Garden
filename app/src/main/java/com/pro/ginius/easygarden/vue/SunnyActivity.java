@@ -21,14 +21,14 @@ import java.util.ArrayList;
 public class SunnyActivity extends AppCompatActivity {
 
     //déclaration des variables
-    private Manager c;
+    private Manager controle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sunny);
-        c = Manager.getInstance(null);
+        controle = Manager.getInstance(null);
         init();
     }
 
@@ -37,6 +37,19 @@ public class SunnyActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
 
+        MenuItem mProfil = menu.findItem(R.id.menu_profil);
+        MenuItem mLogin = menu.findItem(R.id.menu_login);
+        MenuItem mLogout = menu.findItem(R.id.menu_deconnect);
+        MenuItem mFavori = menu.findItem(R.id.menu_favori);
+        if(controle.getProfil()==null){
+            mProfil.setVisible(false);
+            mFavori.setVisible(false);
+            mLogout.setVisible(false);
+        }else{
+            mLogin.setVisible(false);
+
+        }
+
 
         return true;
     }
@@ -44,48 +57,72 @@ public class SunnyActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
+            switch (item.getItemId()) {
 
-            case R.id.menu_ensoleillement:
+                case R.id.menu_exposition:
 
-                Toast.makeText(this, "menu_par_ensoleillement selectionné", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(SunnyActivity.this, SunnyActivity.class);
-                startActivity(intent);
-                finish();
-                return true;
+                    Toast.makeText(this, "liste par exposition selectionnée", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SunnyActivity.this, SunnyActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
 
-            case R.id.menu_type:
+                case R.id.menu_profil: // si le profil utilisateur est existant donc il a acces au menu profil
 
-                Toast.makeText(this, "menu_par_type selectionné", Toast.LENGTH_SHORT).show();
-                Intent intent2 = new Intent(SunnyActivity.this, TypeActivity.class);
-                startActivity(intent2);
-                finish();
-                return true;
+                    Toast.makeText(this, "menu profil selectionné", Toast.LENGTH_SHORT).show();
+                    Intent intent5 = new Intent(SunnyActivity.this, ProfilActivity.class);
+                    startActivity(intent5);
+                    finish();
+                    return true;
 
-            case R.id.menu_acceuil:
+                case R.id.menu_login:
 
-                Toast.makeText(this, "menu_acceuil selectionné", Toast.LENGTH_SHORT).show();
-                Intent intent3 = new Intent(SunnyActivity.this, MainActivity.class);
-                startActivity(intent3);
-                finish();
-                return true;
+                    Toast.makeText(this, "page de connexion selectionnée", Toast.LENGTH_SHORT).show();
+                    Intent intent6 = new Intent(SunnyActivity.this, LoginActivity.class);
+                    startActivity(intent6);
+                    finish();
+                    return true;
 
-            case R.id.menu_deconnect:
-                c.setProfil(null);
-                Toast.makeText(this, "menu_deconnect selectionné", Toast.LENGTH_SHORT).show();
-                Intent intent4 = new Intent(SunnyActivity.this, LoginActivity.class);
-                startActivity(intent4);
-                finish();
-                return true;
+                case R.id.menu_favori:
 
-            case R.id.menu_contact:
+                    Toast.makeText(this, "page de favori selectionnée", Toast.LENGTH_SHORT).show();
+                    Intent intent7 = new Intent(SunnyActivity.this, FavoriActivity.class);
+                    startActivity(intent7);
+                    finish();
+                    return true;
 
-                Toast.makeText(this, "menu_contact selectionné", Toast.LENGTH_SHORT).show();
-                return true;
+                case R.id.menu_type:
 
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+                    Toast.makeText(this, "Liste par type selectionnée", Toast.LENGTH_SHORT).show();
+                    Intent intent2 = new Intent(SunnyActivity.this, TypeActivity.class);
+                    startActivity(intent2);
+                    finish();
+                    return true;
+
+                case R.id.menu_accueil:
+
+                    Toast.makeText(this, "Accueil selectionné", Toast.LENGTH_SHORT).show();
+                    Intent intent3 = new Intent(SunnyActivity.this, MainActivity.class);
+                    startActivity(intent3);
+                    finish();
+                    return true;
+
+                case R.id.menu_deconnect:
+                    controle.setProfil(null);
+                    Intent intent4 = new Intent(SunnyActivity.this, MainActivity.class);
+                    startActivity(intent4);
+                    finish();
+                    return true;
+
+                case R.id.menu_contact:
+
+                    Toast.makeText(this, "Contact selectionné", Toast.LENGTH_SHORT).show();
+                    return true;
+
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
+
     }
 
         public void init(){
@@ -107,7 +144,7 @@ public class SunnyActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //
 
-                c.RecupPlanteByOmbre();
+                controle.RecupPlanteByOmbre();
                 creerListe();
 
             }
@@ -124,7 +161,7 @@ public class SunnyActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //
 
-                c.RecupPlanteByMiOmbre();
+                controle.RecupPlanteByMiOmbre();
                 creerListe();
 
             }
@@ -141,7 +178,7 @@ public class SunnyActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //
 
-                c.RecupPlanteBySoleil();
+                controle.RecupPlanteBySoleil();
                 creerListe();
 
             }
@@ -152,7 +189,7 @@ public class SunnyActivity extends AppCompatActivity {
      * permet de créer la listeAdapter
      */
     private void creerListe(){
-        ArrayList<Plante> lesPlantes = c.getListePlantes();
+        ArrayList<Plante> lesPlantes = controle.getListePlantes();
         if(lesPlantes != null){
             ListView listePlantes = (ListView)findViewById(R.id.listePlantes2);
             ListePlanteAdapter adapter = new ListePlanteAdapter(this,lesPlantes);

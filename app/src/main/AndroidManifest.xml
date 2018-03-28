@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pro.ginius.easygarden">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- To auto-complete the email text field in serveurogin form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -15,17 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".vue.MainActivity">
-        </activity>
-        <activity android:name=".vue.SunnyActivity" />
-        <activity android:name=".vue.TypeActivity" />
-        <activity android:name=".vue.RegisterActivity" />
-        <activity android:name=".vue.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".vue.SunnyActivity" />
+        <activity android:name=".vue.TypeActivity" />
+        <activity android:name=".vue.RegisterActivity" />
+        <activity android:name=".vue.LoginActivity" />
+        <activity android:name=".vue.ProfilActivity" />
+        <activity android:name=".vue.FavoriActivity"/>
     </application>
 
 </manifest>
