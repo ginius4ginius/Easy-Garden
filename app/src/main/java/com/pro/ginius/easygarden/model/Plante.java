@@ -20,6 +20,15 @@ public class Plante implements Serializable {
     private String exposition;
     private String image;
 
+    /**
+     * constructeur
+     * @param nom
+     * @param nomScientifique
+     * @param descriptif
+     * @param exposition
+     * @param type
+     * @param image
+     */
     public Plante(String nom, String nomScientifique, String descriptif, String exposition, String type, String image ){
         this.nom = nom;
         this.nomScientifique = nomScientifique;
@@ -67,6 +76,4 @@ public class Plante implements Serializable {
 
         return new JSONArray(liste);
     }
-
-
 }

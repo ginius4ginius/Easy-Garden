@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.pro.ginius.easygarden.R;
 import com.pro.ginius.easygarden.controleur.Manager;
-import com.pro.ginius.easygarden.model.ListePlanteAdapter;
+import com.pro.ginius.easygarden.model.ListeFavoriAdapter;
 import com.pro.ginius.easygarden.model.Plante;
 
 import java.util.ArrayList;
@@ -122,7 +122,7 @@ public class FavoriActivity extends AppCompatActivity {
 
     public void init(){
 
-        lesPlantesFavori= new ArrayList(controle.RecupPlanteByFavori()) ;
+        lesPlantesFavori= new ArrayList(controle.listePlantesFavori) ;
         creerListe();
     }
 
@@ -133,7 +133,7 @@ public class FavoriActivity extends AppCompatActivity {
 
         if(lesPlantesFavori != null){
             ListView listePlantes = (ListView)findViewById(R.id.listePlantes);
-            ListePlanteAdapter adapter = new ListePlanteAdapter(this,lesPlantesFavori);
+            ListeFavoriAdapter adapter = new ListeFavoriAdapter(this,lesPlantesFavori);
             listePlantes.setAdapter(adapter);
         }
     }

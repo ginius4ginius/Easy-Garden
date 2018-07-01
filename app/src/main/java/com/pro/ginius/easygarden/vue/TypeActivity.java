@@ -28,7 +28,7 @@ public class TypeActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
-        controle = Manager.getInstance(null);
+        controle = Manager.getInstance(this);
         init();
     }
 

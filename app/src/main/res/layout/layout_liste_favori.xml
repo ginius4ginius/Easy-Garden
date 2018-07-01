@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|end"
                     android:contentDescription="TODO"
-                    app:srcCompat="@drawable/add" />
+                    app:srcCompat="@drawable/delete" />
 
             </LinearLayout>
 

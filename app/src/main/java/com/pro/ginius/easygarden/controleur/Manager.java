@@ -23,8 +23,11 @@ public class Manager {
     private static Context c;
     private JSONArray parameters;
     public ArrayList<Plante> listePlantes = new ArrayList<Plante>();
+    public ArrayList<Plante> listePlantesFavori = new ArrayList<Plante>();
 
-    //constructeur privée (pour singleton)
+    /**
+     * constructeur privée (pour singleton)
+     */
     private Manager(){
         super();
     }
@@ -41,7 +44,7 @@ public class Manager {
         return instance;
 
     }
-
+//////////////////////getters et setters
     public ArrayList<Plante> getListePlantes(){
 
         return listePlantes;
@@ -58,6 +61,8 @@ public class Manager {
     public Profil getProfil(){
         return utilisateur;
     }
+
+  /////////////////////////methodes
 
     /**
      * fonction qui créer un utilisateur
@@ -181,17 +186,20 @@ public class Manager {
     /**
      * fonction qui récupère les plantes en favori de la bd
      */
-    public List RecupPlanteByFavori(){
+    public void RecupPlanteByFavori(Plante plante){
 
-        List liste = new ArrayList();
-        liste.add(instance.getProfil());
+        accesDistant.envoi("insertFavori", plante.convertToJSONArray());
+        listePlantesFavori.add(plante);
+    }
 
-        parameters = new JSONArray(liste);
+    /**
+     * fonction qui supprime une plante depuis le favori de la bd
+     */
+    public void delFromFavori(Plante plante){
 
-       // accesDistant.envoi("showPlanteFavori", parameters);
-        //ne reste plus qu'a réaliser le code php
-        //ne reste plus qu'a réaliser le layout liste plante favori
-        return liste;
+        accesDistant.envoi("delFromFavori", plante.convertToJSONArray());
+        listePlantesFavori.remove(plante);
+
     }
 
 

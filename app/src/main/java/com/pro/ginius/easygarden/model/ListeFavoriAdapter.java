@@ -15,25 +15,25 @@ import com.pro.ginius.easygarden.controleur.Manager;
 import java.util.ArrayList;
 
 /**
- * Created by fcd on 22/03/2018.
+ * Created by fcd on 29/03/2018.
  */
 
-public class ListePlanteAdapter extends BaseAdapter {
+public class ListeFavoriAdapter extends BaseAdapter {
 
     //déclaration des variables
-    private ArrayList<Plante> lesPlantes;
+    private ArrayList<Plante> lesFavori;
     private LayoutInflater inflater;
-    private Manager controle;
+    Manager controle;
     Context c;
 
 
     /**
      * constructeur initialisant la liste des plantes
      */
-    public ListePlanteAdapter(Context cont, ArrayList<Plante> lesPlantes){
+    public ListeFavoriAdapter(Context cont, ArrayList<Plante> lesPlantes){
 
         this.c = cont;
-        this.lesPlantes = lesPlantes;
+        this.lesFavori = lesPlantes;
         this.inflater = LayoutInflater.from(c);
         this.controle = Manager.getInstance(null);
     }
@@ -44,7 +44,7 @@ public class ListePlanteAdapter extends BaseAdapter {
      */
     @Override
     public int getCount() {
-        return lesPlantes.size();
+        return lesFavori.size();
     }
 
     /**
@@ -54,7 +54,7 @@ public class ListePlanteAdapter extends BaseAdapter {
      */
     @Override
     public Object getItem(int i) {
-        return lesPlantes.get(i);
+        return lesFavori.get(i);
     }
 
     /**
@@ -78,10 +78,10 @@ public class ListePlanteAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         //déclaration d'un ViewBolder
-        ViewHolder holder;
+        ListeFavoriAdapter.ViewHolder holder;
         //si la ligne n'exsite pas encore
         if(view == null){
-            holder = new ViewHolder();
+            holder = new ListeFavoriAdapter.ViewHolder();
             //la ligne est construite avec un formatage (inflater) relié au layout ListePLanteAdapter
             view = inflater.inflate(R.layout.layout_liste_plante,null);
             //chaque propriétés du holder doivent etre reliées avec les propriété graphiques
@@ -96,24 +96,26 @@ public class ListePlanteAdapter extends BaseAdapter {
             view.setTag(holder);
         }
         else{
-            holder = (ViewHolder) view.getTag();
+            holder = (ListeFavoriAdapter.ViewHolder) view.getTag();
         }
         //valorisation du contenu du holder
-        holder.tvNom.setText(lesPlantes.get(i).getNom().toString());
-        holder.tvNomScientifique.setText(lesPlantes.get(i).getNomScientifique().toString());
-        holder.tvDescriptif.setText(lesPlantes.get(i).getDescriptif().toString());
-        holder.tvType.setText(lesPlantes.get(i).getType().toString());
-        holder.tvExposition.setText(lesPlantes.get(i).getExposition().toString());
+        holder.tvNom.setText(lesFavori.get(i).getNom().toString());
+        holder.tvNomScientifique.setText(lesFavori.get(i).getNomScientifique().toString());
+        holder.tvDescriptif.setText(lesFavori.get(i).getDescriptif().toString());
+        holder.tvType.setText(lesFavori.get(i).getType().toString());
+        holder.tvExposition.setText(lesFavori.get(i).getExposition().toString());
         holder.btnAddFavori.setTag(i);
-        //click sur le bouton poru enregistrer la plante dans le favori
+        //click sur le bouton pour supprimer la plante du favori
         holder.btnAddFavori.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 int position = (int)v.getTag();
-                controle.RecupPlanteByFavori(lesPlantes.get(position));
+                controle.RecupPlanteByFavori(lesFavori.get(position));
+                //rafraichissement de la liste
+                notifyDataSetChanged();
             }
         });
-        PicassoPlante.downloadImage(c,lesPlantes.get(i).getImage(),holder.imagePlante);
+        PicassoPlante.downloadImage(c,lesFavori.get(i).getImage(),holder.imagePlante);
 
         return view;
     }

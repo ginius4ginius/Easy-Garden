@@ -28,7 +28,7 @@ public class SunnyActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sunny);
-        controle = Manager.getInstance(null);
+        controle = Manager.getInstance(this);
         init();
     }
 
